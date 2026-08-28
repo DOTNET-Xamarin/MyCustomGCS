@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using Asv.Common;
 using Avalonia;
@@ -242,15 +242,30 @@ public partial class AnnotationLayer : Canvas
         var offset = centerScreen - centerPixel;
         var screenPoint = projection.Wgs84ToPixels(geoPoint, Source.Zoom, tileSize) + offset;
 
-        return Source.Rotation == 0
+        var result = Source.Rotation == 0
             ? screenPoint
             : RotatePoint(screenPoint, centerScreen, Source.Rotation);
+
+        if (double.IsNaN(result.X) || double.IsNaN(result.Y) || double.IsInfinity(result.X) || double.IsInfinity(result.Y))
+        {
+            return new Point(0, 0);
+        }
+
+        return result;
     }
 
     private void UpdateVisuals()
     {
         foreach (var item in _annotations)
         {
+            if (
+                double.IsNaN(item.AnchorScreenPosition.X) || double.IsNaN(item.AnchorScreenPosition.Y) ||
+                double.IsNaN(item.ScreenOffset.X) || double.IsNaN(item.ScreenOffset.Y)
+            )
+            {
+                continue;
+            }
+
             item.ScreenPosition = item.AnchorScreenPosition + item.ScreenOffset;
 
             // Center the TextBlock relative to the ScreenPosition
@@ -489,10 +504,25 @@ public partial class AnnotationLayer : Canvas
         out Point separation
     )
     {
+        if (
+            double.IsNaN(center1.X) || double.IsNaN(center1.Y) ||
+            double.IsNaN(center2.X) || double.IsNaN(center2.Y)
+        )
+        {
+            separation = default;
+            return false;
+        }
+
         const double tieEpsilon = 1.0;
 
         var dx = center1.X - center2.X;
         var dy = center1.Y - center2.Y;
+        if (double.IsNaN(dx) || double.IsNaN(dy))
+        {
+            separation = default;
+            return false;
+        }
+
         var overlapX = ((size1.Width + size2.Width) * 0.5) + padding - Math.Abs(dx);
         if (overlapX <= 0)
         {
@@ -509,10 +539,10 @@ public partial class AnnotationLayer : Canvas
 
         if (overlapX < overlapY)
         {
-            var sign =
-                Math.Abs(dx) < tieEpsilon
-                    ? Math.Sign(fallbackDirection1.X - fallbackDirection2.X)
-                    : Math.Sign(dx);
+            var diffX = fallbackDirection1.X - fallbackDirection2.X;
+            var sign = Math.Abs(dx) < tieEpsilon
+                ? (double.IsNaN(diffX) ? 1 : Math.Sign(diffX))
+                : (double.IsNaN(dx) ? 1 : Math.Sign(dx));
             if (sign == 0)
             {
                 sign = 1;
@@ -522,10 +552,10 @@ public partial class AnnotationLayer : Canvas
             return true;
         }
 
-        var ySign =
-            Math.Abs(dy) < tieEpsilon
-                ? Math.Sign(fallbackDirection1.Y - fallbackDirection2.Y)
-                : Math.Sign(dy);
+        var diffY = fallbackDirection1.Y - fallbackDirection2.Y;
+        var ySign = Math.Abs(dy) < tieEpsilon
+            ? (double.IsNaN(diffY) ? 1 : Math.Sign(diffY))
+            : (double.IsNaN(dy) ? 1 : Math.Sign(dy));
         if (ySign == 0)
         {
             ySign = 1;
