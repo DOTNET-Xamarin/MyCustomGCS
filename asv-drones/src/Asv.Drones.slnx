@@ -3,9 +3,13 @@
     <Project Path="Asv.Drones.Launcher/Asv.Drones.Launcher.csproj" />
   </Folder>
   <Folder Name="/Platforms/">
-    <Project Path="Asv.Drones.Android/Asv.Drones.Android.csproj" />
+    <Project Path="Asv.Drones.Android/Asv.Drones.Android.csproj">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
     <Project Path="Asv.Drones.Desktop/Asv.Drones.Desktop.csproj" />
-    <Project Path="Asv.Drones.iOS/Asv.Drones.iOS.csproj" />
+    <Project Path="Asv.Drones.iOS/Asv.Drones.iOS.csproj">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
   </Folder>
   <Folder Name="/Projects/">
     <Project Path="../../asv-avalonia/src/Asv.Avalonia.Charts/Asv.Avalonia.Charts.csproj" />

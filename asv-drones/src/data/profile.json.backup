@@ -11,5 +11,11 @@
       "MaxLoopProtectionCacheSize": 4096
     },
     "EnableMavlinkV2WrapFeature": true
+  },
+  "TileLoaderConfig": {
+    "RequestQueueSize": 100,
+    "RequestParallelThreads": 32,
+    "EmptyTileBrush": "LightGreen",
+    "Mode": "mixed"
   }
 }
