@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)"/>
+        <!--Condition below is needed to remove AvaloniaUI.DiagnosticsSupport package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1"/>
+
+        <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Asv.Avalonia.Charts\Asv.Avalonia.Charts.csproj" />
+      <ProjectReference Include="..\Asv.Avalonia.Example.Api\Asv.Avalonia.Example.Api.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="RS.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RS.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="RS.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RS.resx</DependentUpon>
+      </Compile>
+      <Compile Remove="Controls\Blocks\BaseExampleBlock.axaml.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Core\" />
+      <Folder Include="Shell\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Core\Controls\Blocks\About\AboutExampleBlock.axaml" />
+      <AdditionalFiles Include="Core\Controls\Blocks\Action\ActionExampleBlock.axaml" />
+      <AdditionalFiles Include="Core\Controls\Blocks\BaseExampleBlock.axaml" />
+      <AdditionalFiles Include="Core\Controls\Blocks\Header\HeaderBlock.axaml" />
+      <AdditionalFiles Include="Core\Controls\Blocks\Preview\PreviewExampleBlock.axaml" />
+      <AdditionalFiles Include="Core\Controls\ContentDialogMini\ContentDialogMini.axaml" />
+      <AdditionalFiles Include="Core\Controls\DialogItemImageView\DialogItemImageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\ControlsGalleryPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\DialogControls\DialogControlsPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\HistoricalControls\HistoricalControlsPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\InfoBoxControls\InfoBoxControlsPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\Markdown\MarkdownPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\MapControls\MapControlsPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\PropertyEditor\PropertyEditorPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\RttBoxes\RttBoxesPageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\TextFile\TextFilePageView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\ControlsGallery\Workspace\WorkspacePageView.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaXaml Remove="Controls\Blocks\BaseExampleBlock.axaml" />
+    </ItemGroup>
+</Project>

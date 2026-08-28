@@ -1,0 +1,884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root"
+                xmlns="">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="DialogControlsPageViewModel_Title" xml:space="preserve">
+        <value>Dialogs</value>
+    </data>
+    <data name="MapControlsPageViewModel_Title" xml:space="preserve">
+        <value>Map Example</value>
+    </data>
+    <data name="InfoBoxControlsPageViewModel_Title" xml:space="preserve">
+        <value>InfoBox</value>
+    </data>
+    <data name="HistoricalControlsPageViewModel_Title" xml:space="preserve">
+        <value>Historical fields</value>
+    </data>
+    <data name="MarkdownPageViewModel_Title" xml:space="preserve">
+        <value>Markdown</value>
+    </data>
+    <data name="ControlsGalleryPageViewModel_Title" xml:space="preserve">
+        <value>Controls gallery</value>
+    </data>
+    <data name="OpenControlsGalleryPageCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Command that open's controls gallery</value>
+    </data>
+    <data name="OpenControlsGalleryPageCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Open controls gallery</value>
+    </data>
+    <data name="DialogControlsPageViewModel_OpenFilePrefab_Title" xml:space="preserve">
+        <value>Open File</value>
+    </data>
+    <data name="DialogControlsPageViewModel_SaveFilePrefab_Title" xml:space="preserve">
+        <value>Save File</value>
+    </data>
+    <data name="DialogControlsPageViewModel_SelectFolderPrefab_Title" xml:space="preserve">
+        <value>Open Folder</value>
+    </data>
+    <data name="DialogControlsPageViewModel_ObserveFolderPrefab_Title" xml:space="preserve">
+        <value>Observe Folder</value>
+    </data>
+    <data name="DialogControlsPageViewModel_YesOrNoPrefab_Title" xml:space="preserve">
+        <value>Warning</value>
+    </data>
+    <data name="DialogControlsPageViewModel_YesOrNoPrefab_Message" xml:space="preserve">
+        <value>Do you really want to exit?</value>
+    </data>
+    <data name="DialogControlsPageViewModel_SavePrefab_Title" xml:space="preserve">
+        <value>Saving</value>
+    </data>
+    <data name="DialogControlsPageViewModel_SavePrefab_Message" xml:space="preserve">
+        <value>Save?</value>
+    </data>
+    <data name="DialogControlsPageViewModel_HotKeyCapturePrefab_Title" xml:space="preserve">
+        <value>Key Capture</value>
+    </data>
+    <data name="DialogControlsPageViewModel_HotKeyCapturePrefab_Message" xml:space="preserve">
+        <value>Press the key</value>
+    </data>
+    <data name="DialogControlsPageViewModel_InputPrefab_Title" xml:space="preserve">
+        <value>Input</value>
+    </data>
+    <data name="DialogControlsPageViewModel_InputPrefab_Message" xml:space="preserve">
+        <value>Pass the data</value>
+    </data>
+    <data name="DialogControlsPageView_System_Note" xml:space="preserve">
+        <value>System dialogs are available on desktop platforms. Some options depend on OS capabilities.</value>
+    </data>
+    <data name="HistoricalControlsPageView_Description" xml:space="preserve">
+        <value>Examples of historical properties with simple editing.</value>
+    </data>
+    <data name="InfoBoxControlsPageView_Description" xml:space="preserve">
+        <value>Inline notification for app-wide messages. Examples below show basic usage, action button, and closable variants.</value>
+    </data>
+    <data name="DialogControlsPageView_Description" xml:space="preserve">
+        <value>Examples of dialogs — windows for text input, option selection, action confirmation and so on.</value>
+    </data>
+    <data name="DialogControlsPageView_Custom_Title" xml:space="preserve">
+        <value>Custom dialog prefabs</value>
+    </data>
+    <data name="DialogControlsPageView_System_Title" xml:space="preserve">
+        <value>Prefabs of the system dialogs</value>
+    </data>
+    <data name="HistoricalControlsPageView_Rules_Description" xml:space="preserve">
+        <value>Rules: non-empty; and second input additionally forbids ‘s’.</value>
+    </data>
+    <data name="HistoricalControlsPageView_Rules_One" xml:space="preserve">
+        <value>One rule:</value>
+    </data>
+    <data name="HistoricalControlsPageView_Rules_Many" xml:space="preserve">
+        <value>Many rules:</value>
+    </data>
+    <data name="InfoBoxControlsPageView_Common_Title" xml:space="preserve">
+        <value>Title</value>
+    </data>
+    <data name="InfoBoxControlsPageView_Common_Message" xml:space="preserve">
+        <value>Message</value>
+    </data>
+    <data name="InfoBoxControlsPageView_Common_Severity" xml:space="preserve">
+        <value>Severity</value>
+    </data>
+    <data name="InfoBoxControlsPageView_Basic" xml:space="preserve">
+        <value>Basic</value>
+    </data>
+    <data name="InfoBoxControlsPageView_ActionButton" xml:space="preserve">
+        <value>With action button</value>
+    </data>
+    <data name="InfoBoxControlsPageView_Closable" xml:space="preserve">
+        <value>Closable</value>
+    </data>
+    <data name="InfoBoxControlsPageView_Examples" xml:space="preserve">
+        <value>Examples</value>
+    </data>
+    <data name="InfoBoxControlsPageView_ActionButton_Title" xml:space="preserve">
+        <value>Do action</value>
+    </data>
+    <data name="HistoricalControlsPageView_GeoPoint" xml:space="preserve">
+        <value>GeoPoint:</value>
+    </data>
+    <data name="HistoricalControlsPageView_Toggle" xml:space="preserve">
+        <value>Toggle:</value>
+    </data>
+    <data name="HistoricalControlsPageView_String" xml:space="preserve">
+        <value>String (no validation):</value>
+    </data>
+    <data name="HistoricalControlsPageView_Unit" xml:space="preserve">
+        <value>Speed:</value>
+    </data>
+    <data name="HistoricalControlsPageView_Time" xml:space="preserve">
+        <value>Time:</value>
+    </data>
+    <data name="HistoricalControlsPageView_Basic" xml:space="preserve">
+        <value>Basic</value>
+    </data>
+    <data name="HistoricalControlsPageView_Validation" xml:space="preserve">
+        <value>Validation</value>
+    </data>
+    <data name="InfoBoxControlsPageViewModel_Example_Title" xml:space="preserve">
+        <value>Example InfoBox title</value>
+    </data>
+    <data name="InfoBoxControlsPageViewModel_Example_Message" xml:space="preserve">
+        <value>Example InfoBox message</value>
+    </data>
+    <data name="DialogControlsPageView_OpenFilePrefab_Title" xml:space="preserve">
+        <value>Open file</value>
+    </data>
+    <data name="DialogControlsPageView_SaveFilePrefab_Title" xml:space="preserve">
+        <value>Save file</value>
+    </data>
+    <data name="DialogControlsPageView_SelectFolderPrefab_Title" xml:space="preserve">
+        <value>Select folder</value>
+    </data>
+    <data name="DialogControlsPageView_ObserveFolderPrefab_Title" xml:space="preserve">
+        <value>Observe folder</value>
+    </data>
+    <data name="DialogControlsPageView_YesOrNoPrefab_Title" xml:space="preserve">
+        <value>Open confirmation dialog</value>
+    </data>
+    <data name="DialogControlsPageView_SavePrefab_Title" xml:space="preserve">
+        <value>Open saving dialog</value>
+    </data>
+    <data name="DialogControlsPageView_InputPrefab_Title" xml:space="preserve">
+        <value>Open input dialog</value>
+    </data>
+    <data name="DialogControlsPageView_HotKeyCapturePrefab_Title" xml:space="preserve">
+        <value>Open key capture dialog</value>
+    </data>
+    <data name="DialogControlsPageViewModel_CancelResult" xml:space="preserve">
+        <value>cancel</value>
+    </data>
+    <data name="DialogControlsPageViewModel_OpenFilePrefab_Result" xml:space="preserve">
+        <value>Opened file: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_SaveFilePrefab_Result" xml:space="preserve">
+        <value>Saved file: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_SelectFolderPrefab_Result" xml:space="preserve">
+        <value>Selected folder: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_ObserveFolderPrefab_Result" xml:space="preserve">
+        <value>Observed folder: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_YesOrNoPrefab_Result" xml:space="preserve">
+        <value>Yes/No: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_SavePrefab_Result" xml:space="preserve">
+        <value>Saved: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_InputPrefab_Result" xml:space="preserve">
+        <value>Input: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_HotKeyCapturePrefab_Result" xml:space="preserve">
+        <value>Selected HotKey: {0}</value>
+    </data>
+    <data name="OpenControlsGalleryPageCommand_Action_Title" xml:space="preserve">
+        <value>Controls gallery</value>
+    </data>
+    <data name="OpenControlsGalleryPageCommand_Action_Description" xml:space="preserve">
+        <value>Open controls gallery</value>
+    </data>
+    <data name="HistoricalControlsPageView_Enum" xml:space="preserve">
+        <value>Enum:</value>
+    </data>
+    <data name="DialogControlsPageViewModel_GeoPointPrefab_Result" xml:space="preserve">
+        <value>Selected GeoPoint: {0}</value>
+    </data>
+    <data name="DialogControlsPageView_GeoPointPrefab_Title" xml:space="preserve">
+        <value>Open geopoint dialog</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_Title" xml:space="preserve">
+        <value>Title</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_Content" xml:space="preserve">
+        <value>Content</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_Buttons" xml:space="preserve">
+        <value>Primary / Secondary:</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_Header" xml:space="preserve">
+        <value>Custom dialog</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_Description" xml:space="preserve">
+        <value>You can create a new dialog from scratch. You can configure its content, the displayed buttons, their text, and whether they are enabled or not. Below you will find only a few customization options — all other parameters are configured programmatically.</value>
+    </data>
+    <data name="DialogControlsPageView_Prefabs_Header" xml:space="preserve">
+        <value>Ready dialog prefabs</value>
+    </data>
+    <data name="DialogControlsPageView_Prefabs_Description" xml:space="preserve">
+        <value>You can also use ready-made dialog prefabs that are suitable for most tasks, such as text input, selecting a geolocation point, choosing a file, and so on. Some parameters in them, such as the message or button availability, can also be customized. Prefabs are divided into two types: custom dialogs created manually for specific tasks, and system dialogs such as the file picker.</value>
+    </data>
+    <data name="DialogControlsPageView_SelectFolderPrefab_Description" xml:space="preserve">
+    <value>
+Allows the user to select a folder.
+
+• Input: dialog title and initial location.  
+• Output: selected folder path.
+    </value>
+</data>
+    <data name="DialogControlsPageView_SaveFilePrefab_Description" xml:space="preserve">
+    <value>
+Allows the user to save a file.
+
+• Input: title, default extension, type filter, and initial directory.  
+• Output: selected file path.
+    </value>
+</data>
+    <data name="DialogControlsPageView_OpenFilePrefab_Description" xml:space="preserve">
+    <value>
+Allows the user to open a file.
+
+• Input: title, type filter, and initial directory.  
+• Output: selected file path.
+    </value>
+</data>
+    <data name="DialogControlsPageView_ObserveFolderPrefab_Description" xml:space="preserve">
+    <value>
+Shows the contents of the selected folder.
+
+• Input: dialog title and default path.  
+• Output: none.
+    </value>
+</data>
+    <data name="DialogControlsPageView_YesOrNoPrefab_Description" xml:space="preserve">
+    <value>
+Allows the user to agree or decline.
+
+• Input: dialog title and message.  
+• Output: true or false.
+    </value>
+</data>
+    <data name="DialogControlsPageView_HotKeyCapturePrefab_Description" xml:space="preserve">
+    <value>
+Allows the user to choose a hotkey by pressing it.
+
+• Input: title, message, and default hotkey.  
+• Output: selected hotkey.
+    </value>
+</data>
+    <data name="DialogControlsPageView_GeoPointPrefab_Description" xml:space="preserve">
+    <value>
+Allows the user to select a point on the map.
+
+• Input: initial location.  
+• Output: GeoPoint.
+    </value>
+</data>
+    <data name="DialogControlsPageView_InputPrefab_Description" xml:space="preserve">
+    <value>
+Allows the user to enter text.
+
+• Input: dialog title and message.  
+• Output: entered text value.
+    </value>
+</data>
+    <data name="DialogControlsPageView_SavePrefab_Description" xml:space="preserve">
+    <value>
+Used to confirm saving information.
+
+• Input: dialog title and message.  
+• Output: true or false.
+    </value>
+</data>
+    <data name="DialogControlsPageViewModel_ContentDialog_Result" xml:space="preserve">
+        <value>Custom dialog result: {0}</value>
+    </data>
+    <data name="DialogControlsPageViewModel_ObserveFolderPrefab_ResultShort" xml:space="preserve">
+        <value>Directory opened!</value>
+    </data>
+    <data name="DialogControlsPageViewModel_ContentDialog_Primary" xml:space="preserve">
+        <value>Primary</value>
+    </data>
+    <data name="DialogControlsPageViewModel_ContentDialog_Secondary" xml:space="preserve">
+        <value>Secondary</value>
+    </data>
+    <data name="DialogControlsPageViewModel_ContentDialog_Close" xml:space="preserve">
+        <value>Close</value>
+    </data>
+    <data name="DialogControlsPageView_InputPrefab_Placeholder" xml:space="preserve">
+        <value>Some text...</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_TextContent" xml:space="preserve">
+        <value>Text</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_ImageContent" xml:space="preserve">
+        <value>Image</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_ImageContent_Select" xml:space="preserve">
+        <value>Select photo...</value>
+    </data>
+    <data name="DialogControlsPageView_ObserveFolderPrefab_PlaceHolder" xml:space="preserve">
+        <value>Press the button...</value>
+    </data>
+    <data name="DialogControlsPageView_ContentDialog_Open" xml:space="preserve">
+        <value>Open dialog</value>
+    </data>
+    <data name="ResetGeoPointDialogResultCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Reset geopoint dialog</value>
+    </data>
+    <data name="ResetGeoPointDialogResultCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Reset the geopoint dialog result</value>
+    </data>
+    <data name="ShellLeftMenuExtenderExample_HomeItem_Header" xml:space="preserve">
+        <value>Home page</value>
+    </data>
+    <data name="HistoricalControlsPageViewModel_StringPropWithManyValidations_ValidationError_ShouldNotContainS" xml:space="preserve">
+        <value>Value shouldn't contain 's'</value>
+    </data>
+    <data name="PropertyEditorTreeMenu_PropertyEditorTreeMenu_Property_Editor" xml:space="preserve">
+        <value>Property Editor</value>
+    </data>
+    <data name="ControlsGalleryPageViewModel_TreeHeader" xml:space="preserve">
+        <value>Controls</value>
+    </data>
+    <data name="OpenMapTestPageCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Open map test</value>
+    </data>
+    <data name="OpenMapTestPageCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Command that opens map test page</value>
+    </data>
+    <data name="OpenMapTestPageCommand_Action_Name" xml:space="preserve">
+        <value>Map test</value>
+    </data>
+    <data name="OpenMapTestPageCommand_Action_Description" xml:space="preserve">
+        <value>Open map test</value>
+    </data>
+    <data name="MapTestPageViewModel_Title" xml:space="preserve">
+        <value>Map test</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_Editable" xml:space="preserve">
+        <value>Anchor {0}</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_LongText" xml:space="preserve">
+        <value>Very long annotation text to test clipping and overflow during map rotation</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_Cluster" xml:space="preserve">
+        <value>Cluster item #{0} with some text</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_Edge" xml:space="preserve">
+        <value>Edge {0} — far from center</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_Offset" xml:space="preserve">
+        <value>Offset: {0}</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_RotatesWithMap" xml:space="preserve">
+        <value>Rotates WITH map</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_NoMapRotation" xml:space="preserve">
+        <value>Does NOT rotate with map</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_ExtremeAzimuth" xml:space="preserve">
+        <value>Azimuth=359.9°</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_Center" xml:space="preserve">
+        <value>Exact center (pivot)</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_Plane" xml:space="preserve">
+        <value>Plane</value>
+    </data>
+    <data name="MapTestPageViewModel_Anchor_PlaneAzimuth" xml:space="preserve">
+        <value>Plane {0}°</value>
+    </data>
+    <data name="MapTestPageViewModel_HeavyPolygon" xml:space="preserve">
+        <value>Show 100K points polygon</value>
+    </data>
+    <data name="MapTestPageViewModel_Menu_Info" xml:space="preserve">
+        <value>Anchor info</value>
+    </data>
+    <data name="MapTestPageViewModel_Menu_Action" xml:space="preserve">
+        <value>Sample action</value>
+    </data>
+    <data name="TextFileHandler_FileType_Title" xml:space="preserve">
+        <value>ASV Markdown file</value>
+    </data>
+    <data name="TextFilePageViewModel_Title" xml:space="preserve">
+        <value>ASV Markdown file</value>
+    </data>
+    <data name="TextFilePageViewModel_NewFile_Title" xml:space="preserve">
+        <value>New ASV Markdown file</value>
+    </data>
+    <data name="TextFilePageViewModel_CloseRestriction_Message" xml:space="preserve">
+        <value>The file has unsaved changes</value>
+    </data>
+    <data name="RttBoxesTreeMenu_Name" xml:space="preserve">
+        <value>Rtt boxes</value>
+    </data>
+    <data name="WorkspaceTreeMenu_Name" xml:space="preserve">
+        <value>Workspace</value>
+    </data>
+    <data name="WorkspaceTreeMenu_StatusTag_Value" xml:space="preserve">
+        <value>Active</value>
+    </data>
+    <data name="MapControlsPageViewModel_Anchor_Header" xml:space="preserve">
+        <value>Anchor {0}</value>
+    </data>
+    <data name="MapControlsPageViewModel_Plane_Header" xml:space="preserve">
+        <value>Plane</value>
+    </data>
+    <data name="MapControlsPageViewModel_PlaneAzimuth_Header" xml:space="preserve">
+        <value>Plane {0}°</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Velocity_Header" xml:space="preserve">
+        <value>Velocity</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Velocity_ShortHeader" xml:space="preserve">
+        <value>vel</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Velocity_Description" xml:space="preserve">
+        <value>Current vehicle speed in the selected telemetry stream.</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Distance_Header" xml:space="preserve">
+        <value>Distance</value>
+    </data>
+    <data name="RttBoxesPageViewModel_TwoColumn_Description" xml:space="preserve">
+        <value>Left and right distance channels updated independently.</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Left_Header" xml:space="preserve">
+        <value>Left</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Right_Header" xml:space="preserve">
+        <value>Right</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Single_Description" xml:space="preserve">
+        <value>Single live distance value with progress and status.</value>
+    </data>
+    <data name="RttBoxesPageViewModel_NoData_StatusText" xml:space="preserve">
+        <value>No data</value>
+    </data>
+    <data name="RttBoxesPageViewModel_KeyValue_ShortHeader" xml:space="preserve">
+        <value>Short</value>
+    </data>
+    <data name="RttBoxesPageViewModel_KeyValue_Header" xml:space="preserve">
+        <value>Common RTT</value>
+    </data>
+    <data name="RttBoxesPageViewModel_KeyValue_Description" xml:space="preserve">
+        <value>Common round-trip telemetry values shown as key-value rows.</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Power_Header" xml:space="preserve">
+        <value>Power</value>
+    </data>
+    <data name="RttBoxesPageViewModel_RiseTime_Header" xml:space="preserve">
+        <value>Rise time</value>
+    </data>
+    <data name="RttBoxesPageViewModel_FallTime_Header" xml:space="preserve">
+        <value>Fall time</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Status_Header" xml:space="preserve">
+        <value>Status</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Status_Value" xml:space="preserve">
+        <value>Normal</value>
+    </data>
+    <data name="RttBoxesPageViewModel_Unknown_Header" xml:space="preserve">
+        <value>Unknown</value>
+    </data>
+    <data name="RttBoxesPageViewModel_SplitDigit_Description" xml:space="preserve">
+        <value>Distance value split into integer and fractional runs.</value>
+    </data>
+    <data name="RttBoxesPageViewModel_GeoPoint_Header" xml:space="preserve">
+        <value>UAV position</value>
+    </data>
+    <data name="RttBoxesPageViewModel_GeoPoint_ShortHeader" xml:space="preserve">
+        <value>UAV</value>
+    </data>
+    <data name="RttBoxesPageViewModel_GeoPoint_Description" xml:space="preserve">
+        <value>Live UAV latitude, longitude, and altitude.</value>
+    </data>
+    <data name="WorkspacePageViewModel_HideAll_Header" xml:space="preserve">
+        <value>Hide all</value>
+    </data>
+    <data name="WorkspacePageViewModel_ShowAll_Header" xml:space="preserve">
+        <value>Show all</value>
+    </data>
+    <data name="WorkspacePageViewModel_ShowError_Header" xml:space="preserve">
+        <value>Show error</value>
+    </data>
+    <data name="WorkspacePageViewModel_GenerateException_Header" xml:space="preserve">
+        <value>Generate Exception</value>
+    </data>
+    <data name="WorkspacePageViewModel_ChangeStatus_Header" xml:space="preserve">
+        <value>Change status</value>
+    </data>
+    <data name="WorkspacePageViewModel_PropertyEditor_Header" xml:space="preserve">
+        <value>Property editor</value>
+    </data>
+    <data name="WorkspacePageViewModel_Location1_Header" xml:space="preserve">
+        <value>Location 1</value>
+    </data>
+    <data name="WorkspacePageViewModel_Location2_Header" xml:space="preserve">
+        <value>Location 2</value>
+    </data>
+    <data name="WorkspacePageViewModel_MapWidget_Header" xml:space="preserve">
+        <value>Map Widget</value>
+    </data>
+    <data name="WorkspacePageViewModel_MapWidget2_Header" xml:space="preserve">
+        <value>Map Widget2</value>
+    </data>
+    <data name="WorkspacePageViewModel_Drone1_Header" xml:space="preserve">
+        <value>Drone 1</value>
+    </data>
+    <data name="WorkspacePageViewModel_SignalPlot_Header" xml:space="preserve">
+        <value>Signal Plot</value>
+    </data>
+    <data name="WorkspacePageViewModel_TelemetryDashboard_Header" xml:space="preserve">
+        <value>Telemetry Dashboard</value>
+    </data>
+    <data name="WorkspacePageViewModel_Battery_Header" xml:space="preserve">
+        <value>Battery</value>
+    </data>
+    <data name="WorkspacePageViewModel_Battery_ShortHeader" xml:space="preserve">
+        <value>BAT</value>
+    </data>
+    <data name="WorkspacePageViewModel_GnssFix_Header" xml:space="preserve">
+        <value>GNSS Fix</value>
+    </data>
+    <data name="WorkspacePageViewModel_GnssFix_ShortHeader" xml:space="preserve">
+        <value>GNSS</value>
+    </data>
+    <data name="WorkspacePageViewModel_GnssFix_Text" xml:space="preserve">
+        <value>RTK Fixed</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_AltitudeUnit_Header" xml:space="preserve">
+        <value>Altitude V2</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_AltitudeUnit_ShortHeader" xml:space="preserve">
+        <value>Alt</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_AltitudeUnit_Description" xml:space="preserve">
+        <value>V2 unit property with a text value and unit selector.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ThrottleUnit_Header" xml:space="preserve">
+        <value>Throttle V2</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ThrottleUnit_ShortHeader" xml:space="preserve">
+        <value>Thr</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ThrottleUnit_Description" xml:space="preserve">
+        <value>V2 unit property using the throttle unit selector.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Latitude_Header" xml:space="preserve">
+        <value>Position</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Latitude_ShortHeader" xml:space="preserve">
+        <value>Lat</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Latitude_Description" xml:space="preserve">
+        <value>Latitude description</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Longitude_Header" xml:space="preserve">
+        <value>Longitude</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Longitude_ShortHeader" xml:space="preserve">
+        <value>Lon</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Altitude_Header" xml:space="preserve">
+        <value>Altitude</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Altitude_ShortHeader" xml:space="preserve">
+        <value>Alt</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Altitude_Description" xml:space="preserve">
+        <value>Altitude description</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_GeoPoint_Header" xml:space="preserve">
+        <value>Geo Point</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_GeoPoint_Description" xml:space="preserve">
+        <value>Geo Point description</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Time_Header" xml:space="preserve">
+        <value>Time</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Time_ShortHeader" xml:space="preserve">
+        <value>Time</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Time_Description" xml:space="preserve">
+        <value>Time description</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Throttle_Header" xml:space="preserve">
+        <value>Throttle</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Throttle_ShortHeader" xml:space="preserve">
+        <value>Throttle</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Throttle_Description" xml:space="preserve">
+        <value>Throttle description</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_DisplayName_Header" xml:space="preserve">
+        <value>Display name</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_DisplayName_ShortHeader" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_DisplayName_Description" xml:space="preserve">
+        <value>Text editor with validation, icon, remote update marker, and menu button.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_DisplayName_Required" xml:space="preserve">
+        <value>Display name is required</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_DisplayName_DefaultValue" xml:space="preserve">
+        <value>Survey mission</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ActionButton_Header" xml:space="preserve">
+        <value>Run check</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ActionButton_ShortHeader" xml:space="preserve">
+        <value>Run</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ActionButton_Description" xml:space="preserve">
+        <value>Button property with async command, busy state, and update marker.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ToggleSwitch_Header" xml:space="preserve">
+        <value>Telemetry</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ToggleSwitch_ShortHeader" xml:space="preserve">
+        <value>Tel</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ToggleSwitch_Description" xml:space="preserve">
+        <value>Toggle switch property with boolean model and update marker.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ThrottleSlider_Header" xml:space="preserve">
+        <value>Throttle slider</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ThrottleSlider_ShortHeader" xml:space="preserve">
+        <value>Thr</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ThrottleSlider_Description" xml:space="preserve">
+        <value>Slider property with live value, units, and update marker.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_OperationProfile_Header" xml:space="preserve">
+        <value>Operation profile</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_OperationProfile_Description" xml:space="preserve">
+        <value>Combo box with test view models: icon, text-only, and different accent styles.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Manual_Header" xml:space="preserve">
+        <value>Manual</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Manual_Description" xml:space="preserve">
+        <value>Operator controls every step directly.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Guided_Header" xml:space="preserve">
+        <value>Guided</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Guided_Description" xml:space="preserve">
+        <value>Assisted flow with validation after each step.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Survey_Header" xml:space="preserve">
+        <value>Survey</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Survey_Description" xml:space="preserve">
+        <value>Collects structured measurements for later analysis.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Silent_Header" xml:space="preserve">
+        <value>Silent</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Silent_Description" xml:space="preserve">
+        <value>Runs without icon or accent decoration.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Inspection_Header" xml:space="preserve">
+        <value>Inspection</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Inspection_Description" xml:space="preserve">
+        <value>Highlights issues and requires operator confirmation.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Minimal_Header" xml:space="preserve">
+        <value>Minimal</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Minimal_Description" xml:space="preserve">
+        <value>Text-only item for compact layouts.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Diagnostics_Header" xml:space="preserve">
+        <value>Diagnostics</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Diagnostics_Description" xml:space="preserve">
+        <value>Shows service information and hardware status.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_OfflineCache_Header" xml:space="preserve">
+        <value>Offline cache</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_OfflineCache_Description" xml:space="preserve">
+        <value>No image, useful when external data is unavailable.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Emergency_Header" xml:space="preserve">
+        <value>Emergency</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Emergency_Description" xml:space="preserve">
+        <value>Critical action style with a warning-colored icon.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Custom_Header" xml:space="preserve">
+        <value>Custom profile</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Profile_Custom_Description" xml:space="preserve">
+        <value>Plain item with only header and description.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_OptimizationMode_Header" xml:space="preserve">
+        <value>Optimization mode</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_OptimizationMode_ShortHeader" xml:space="preserve">
+        <value>Mode</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_OptimizationMode_Description" xml:space="preserve">
+        <value>Button group property based on combo box selection.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Mode_Speed_Header" xml:space="preserve">
+        <value>Speed</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Mode_Speed_Description" xml:space="preserve">
+        <value>Prefer faster processing.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Mode_Quality_Header" xml:space="preserve">
+        <value>Quality</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Mode_Quality_Description" xml:space="preserve">
+        <value>Prefer higher quality.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Mode_Balanced_Header" xml:space="preserve">
+        <value>Balanced</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_Mode_Balanced_Description" xml:space="preserve">
+        <value>Use a balanced preset.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ErrorMenu_Validation_Header" xml:space="preserve">
+        <value>Validation error</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ErrorMenu_Validation_Message" xml:space="preserve">
+        <value>Validation error from property menu.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ErrorMenu_Sync_Header" xml:space="preserve">
+        <value>Sync error</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ErrorMenu_Sync_Message" xml:space="preserve">
+        <value>Synchronization error from property menu.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ErrorMenu_Network_Header" xml:space="preserve">
+        <value>Network error</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ErrorMenu_Network_Message" xml:space="preserve">
+        <value>Network error from property menu.</value>
+    </data>
+    <data name="PropertyEditorPageViewModel_ErrorMenu_Clear_Header" xml:space="preserve">
+        <value>Clear error</value>
+    </data>
+    <data name="PropertyEditorPageView_ShowHeaders_Text" xml:space="preserve">
+        <value>Show property headers</value>
+    </data>
+    <data name="PropertyEditorPageView_AdvancedScope_Content" xml:space="preserve">
+        <value>Advanced left scope</value>
+    </data>
+    <data name="PropertyEditorPageView_Editor_Title" xml:space="preserve">
+        <value>PropertyEditor</value>
+    </data>
+    <data name="PropertyEditorPageView_EditorCopy_Title" xml:space="preserve">
+        <value>PropertyEditor copy</value>
+    </data>
+    <data name="PropertyEditorPageView_ExtendedEditor_Title" xml:space="preserve">
+        <value>ExtendedPropertyEditor</value>
+    </data>
+    <data name="PropertyEditorPageView_ModelValues_Title" xml:space="preserve">
+        <value>Model values</value>
+    </data>
+    <data name="PropertyEditorPageView_DisplayName_Label" xml:space="preserve">
+        <value>Display name</value>
+    </data>
+    <data name="PropertyEditorPageView_OperationProfile_Label" xml:space="preserve">
+        <value>Operation profile</value>
+    </data>
+    <data name="PropertyEditorPageView_RunCheckCount_Label" xml:space="preserve">
+        <value>Run check count</value>
+    </data>
+    <data name="PropertyEditorPageView_Telemetry_Label" xml:space="preserve">
+        <value>Telemetry</value>
+    </data>
+    <data name="PropertyEditorPageView_GeoPoint_Label" xml:space="preserve">
+        <value>GeoPoint</value>
+    </data>
+    <data name="PropertyEditorPageView_Units_Title" xml:space="preserve">
+        <value>Units</value>
+    </data>
+    <data name="PropertyEditorPageView_AltitudeV2Model_Label" xml:space="preserve">
+        <value>Altitude V2 model</value>
+    </data>
+    <data name="PropertyEditorPageView_ThrottleV2Model_Label" xml:space="preserve">
+        <value>Throttle V2 model</value>
+    </data>
+    <data name="PropertyEditorPageView_TimeModel_Label" xml:space="preserve">
+        <value>Time model</value>
+    </data>
+    <data name="PropertyEditorPageView_ThrottleModel_Label" xml:space="preserve">
+        <value>Throttle model</value>
+    </data>
+    <data name="PropertyEditorPageView_AltitudeModel_Label" xml:space="preserve">
+        <value>Altitude model</value>
+    </data>
+    <data name="PropertyEditorPageView_Position_Title" xml:space="preserve">
+        <value>Position</value>
+    </data>
+    <data name="PropertyEditorPageView_LatitudeModel_Label" xml:space="preserve">
+        <value>Latitude model</value>
+    </data>
+    <data name="PropertyEditorPageView_LongitudeModel_Label" xml:space="preserve">
+        <value>Longitude model</value>
+    </data>
+    <data name="WorkspacePageViewModel_ErrorMessage_Title" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="WorkspacePageViewModel_ErrorMessage_Message" xml:space="preserve">
+        <value>This is test error message</value>
+    </data>
+    <data name="WorkspacePageViewModel_ErrorMessage_Description" xml:space="preserve">
+        <value>This is description for test error message</value>
+    </data>
+    <data name="WorkspacePageViewModel_ErrorMessage_CommandTitle" xml:space="preserve">
+        <value>ShowAll</value>
+    </data>
+    <data name="WorkspacePageViewModel_CloseRestriction_Message" xml:space="preserve">
+        <value>Test restriction for close</value>
+    </data>
+    <data name="WorkspacePageViewModel_Exception_Title" xml:space="preserve">
+        <value>Workspace exception</value>
+    </data>
+    <data name="WorkspacePageViewModel_Exception_Message" xml:space="preserve">
+        <value>Generated exception for ShellView popup demo.</value>
+    </data>
+</root>

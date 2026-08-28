@@ -1,0 +1,32 @@
+using System.Collections.Immutable;
+using Avalonia.Styling;
+using R3;
+
+namespace Asv.Avalonia;
+
+public class NullThemeService : IThemeService, IDisposable
+{
+    public static IThemeService Instance { get; } = new NullThemeService();
+
+    private readonly ImmutableArray<IThemeInfo> _themes =
+    [
+        new ThemeItem(ThemeService.DarkTheme, RS.ThemeService_Dark, ThemeVariant.Dark),
+        new ThemeItem(ThemeService.LightTheme, RS.ThemeService_Light, ThemeVariant.Light),
+    ];
+
+    private NullThemeService() { }
+
+    /// <inheritdoc />
+    public IEnumerable<IThemeInfo> Themes => _themes;
+
+    /// <inheritdoc />
+    public SynchronizedReactiveProperty<IThemeInfo> CurrentTheme { get; } = new();
+
+    /// <inheritdoc />
+    public SynchronizedReactiveProperty<bool> IsCompact { get; } = new();
+
+    public void Dispose()
+    {
+        CurrentTheme.Dispose();
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "LocalizationServiceConfig": {
+    "CurrentLanguage": "en"
+  },
+  "MavlinkDeviceManagerExtensionConfig": {
+    "SystemId": 255,
+    "ComponentId": 255,
+    "LoopProtection": {
+      "IsLoopProtectionEnabled": false,
+      "LoopProtectionWindow": "00:00:10",
+      "MaxLoopProtectionCacheSize": 4096
+    },
+    "EnableMavlinkV2WrapFeature": true
+  }
+}

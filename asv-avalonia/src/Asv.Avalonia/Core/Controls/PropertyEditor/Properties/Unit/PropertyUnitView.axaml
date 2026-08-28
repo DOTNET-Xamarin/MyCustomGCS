@@ -1,0 +1,286 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:avalonia="clr-namespace:Asv.Avalonia"
+    xmlns:avalonia1="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    mc:Ignorable="d"
+    d:DesignWidth="250"
+    d:DesignHeight="120"
+    x:Class="Asv.Avalonia.PropertyUnitView"
+    x:DataType="avalonia:PropertyUnitViewModel"
+>
+    <Design.DataContext>
+        <avalonia:PropertyUnitDesign />
+    </Design.DataContext>
+
+    <UserControl.Resources>
+        <ControlTheme
+            x:Key="PropertyMenuNodeTheme"
+            TargetType="MenuItem"
+            BasedOn="{StaticResource {x:Type MenuItem}}"
+            x:DataType="avalonia:MenuNode"
+        >
+            <Setter
+                Property="Icon"
+                Value="{Binding Base.Icon, Converter={x:Static avalonia:MaterialIconConverter.Instance}}"
+            />
+            <Setter Property="Header" Value="{Binding Base.Header}" />
+            <Setter Property="ItemsSource" Value="{Binding Items}" />
+            <Setter Property="Command" Value="{Binding Base.Command}" />
+            <Setter Property="CommandParameter" Value="{Binding Base.CommandParameter}" />
+            <Setter Property="IsEnabled" Value="{Binding Base.IsEnabled}" />
+            <Setter Property="IsVisible" Value="{Binding Base.IsVisible}" />
+            <Setter Property="StaysOpenOnClick" Value="{Binding Base.StaysOpenOnClick}" />
+            <Setter Property="InputGesture" Value="{Binding Base.HotKey}" />
+            <Setter Property="IsChecked" Value="{Binding Base.IsChecked}" />
+            <Setter Property="ToggleType" Value="{Binding Base.ToggleType}" />
+            <Setter Property="GroupName" Value="{Binding Base.GroupName}" />
+        </ControlTheme>
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="TextBox#PART_TextBox /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="TextBox#PART_TextBox:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="TextBox#PART_TextBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="TextBox#PART_TextBox:error /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="TextBox#PART_TextBox:disabled /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="Border.error">
+            <Setter Property="BorderBrush" Value="{DynamicResource AsvForegroundErrorBrush}" />
+        </Style>
+        <Style Selector="Border.property-border">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style Selector="Border.property-border:pointerover">
+            <Setter
+                Property="Background"
+                Value="{DynamicResource TextControlBackgroundPointerOver}"
+            />
+            <Setter
+                Property="BorderBrush"
+                Value="{DynamicResource TextControlBorderBrushPointerOver}"
+            />
+        </Style>
+        <Style Selector="Border.property-border.editing">
+            <Setter Property="Background" Value="{DynamicResource TextControlBackgroundFocused}" />
+            <Setter
+                Property="BorderBrush"
+                Value="{DynamicResource TextControlBorderBrushFocused}"
+            />
+        </Style>
+        <Style Selector="Border.property-border.error">
+            <Setter Property="BorderBrush" Value="{DynamicResource AsvForegroundErrorBrush}" />
+        </Style>
+        <Style Selector="DataValidationErrors">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Panel>
+                        <ContentPresenter
+                            Name="PART_ContentPresenter"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Content="{TemplateBinding Content}"
+                            Padding="{TemplateBinding Padding}"
+                        />
+                    </Panel>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+
+    <Border
+        Classes="property-border"
+        Classes.error="{Binding (DataValidationErrors.HasErrors), ElementName=PART_TextBox}"
+        Classes.editing="{Binding IsInEditMode}"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Stretch"
+        BorderThickness="1"
+        CornerRadius="4"
+        Padding="4,0"
+    >
+        <Border.ContextMenu>
+            <ContextMenu
+                IsVisible="{Binding MenuView, Converter={x:Static ObjectConverters.IsNotNull}}"
+                ItemsSource="{Binding MenuView.Items}"
+            >
+                <ContextMenu.ItemContainerTheme>
+                    <StaticResource ResourceKey="PropertyMenuNodeTheme" />
+                </ContextMenu.ItemContainerTheme>
+            </ContextMenu>
+        </Border.ContextMenu>
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition SharedSizeGroup="PrefixIcon" Width="Auto" />
+                <ColumnDefinition SharedSizeGroup="PrefixName" Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition SharedSizeGroup="PostfixStatus" Width="Auto" />
+                <ColumnDefinition SharedSizeGroup="PostfixUnits" Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <avalonia1:MaterialIcon
+                Grid.Column="0"
+                Margin="2"
+                avalonia:AsvPalette.Color="{Binding IconColor}"
+                Kind="{Binding Icon}"
+            >
+                <avalonia1:MaterialIcon.IsVisible>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <Binding Path="Icon" Converter="{x:Static ObjectConverters.IsNotNull}" />
+                        <Binding
+                            Path="(avalonia:PropertyEditorDisplayOptions.ShowPrefixIcon)"
+                            RelativeSource="{RelativeSource Self}"
+                        />
+                    </MultiBinding>
+                </avalonia1:MaterialIcon.IsVisible>
+            </avalonia1:MaterialIcon>
+
+            <TextBlock
+                MinWidth="20"
+                Margin="2,0,4,0"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Classes="description"
+                Text="{Binding ShortHeader}"
+            >
+                <TextBlock.IsVisible>
+                    <MultiBinding Converter="{x:Static BoolConverters.And}">
+                        <Binding
+                            Path="ShortHeader"
+                            Converter="{x:Static StringConverters.IsNotNullOrEmpty}"
+                        />
+                        <Binding
+                            Path="(avalonia:PropertyEditorDisplayOptions.ShowShortHeader)"
+                            RelativeSource="{RelativeSource Self}"
+                        />
+                    </MultiBinding>
+                </TextBlock.IsVisible>
+            </TextBlock>
+
+            <TextBox
+                x:Name="PART_TextBox"
+                GotFocus="PART_TextBox_OnGotFocus"
+                LostFocus="PART_TextBox_OnLostFocus"
+                avalonia:NavigationHelper.IsFocused="{Binding IsFocused, Mode=OneWay}"
+                Grid.Column="2"
+                IsEnabled="{Binding !IsBusy}"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="4"
+                ToolTip.Tip="{Binding (DataValidationErrors.Errors), ElementName=PART_TextBox, Converter={x:Static avalonia:ValidationErrorsToStringConverter.Instance}}"
+                Text="{Binding Text.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            >
+                <TextBox.KeyBindings>
+                    <KeyBinding Gesture="Enter" Command="{Binding ApplyFromUserCommand}" />
+                    <KeyBinding Gesture="Escape" Command="{Binding CancelCommand}" />
+                </TextBox.KeyBindings>
+            </TextBox>
+
+            <avalonia:PropertyStatusView Grid.Column="3" VerticalAlignment="Center" />
+
+            <Panel Grid.Column="4">
+                <Button
+                    Padding="4,2"
+                    IsTabStop="False"
+                    HorizontalAlignment="Stretch"
+                    Theme="{DynamicResource TransparentButton}"
+                >
+                    <Button.IsVisible>
+                        <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                            <Binding Path="IsSync" />
+                            <Binding Path="IsBusy" />
+                            <Binding Path="HasValidationErrors" />
+                        </MultiBinding>
+                    </Button.IsVisible>
+                    <Button.Flyout>
+                        <MenuFlyout ItemsSource="{Binding Unit.AvailableUnits.Values}">
+                            <MenuFlyout.ItemContainerTheme>
+                                <ControlTheme
+                                    TargetType="MenuItem"
+                                    BasedOn="{StaticResource {x:Type MenuItem}}"
+                                    x:DataType="avalonia:IUnitItem"
+                                >
+                                    <Setter Property="Header" Value="{Binding Name}" />
+                                    <Setter
+                                        Property="Command"
+                                        Value="{ReflectionBinding DataContext.ChangeUnitCommand, ElementName=PART_TextBox}"
+                                    />
+                                    <Setter Property="CommandParameter" Value="{Binding }" />
+                                </ControlTheme>
+                            </MenuFlyout.ItemContainerTheme>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                    <Panel>
+                        <TextBlock
+                            Classes="description"
+                            IsVisible="{Binding Unit.CurrentUnitItem.Value.Symbol, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                            VerticalAlignment="Center"
+                            Text="{Binding Unit.CurrentUnitItem.Value.Symbol}"
+                        />
+                        <avalonia1:MaterialIcon
+                            IsVisible="{Binding Unit.CurrentUnitItem.Value.Symbol, Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center"
+                            Kind="DotsHorizontal"
+                        />
+                    </Panel>
+                </Button>
+                <Button
+                    Padding="4,2"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Right"
+                    Theme="{DynamicResource TransparentButton}"
+                    Command="{Binding ApplyFromUserCommand}"
+                >
+                    <Button.IsVisible>
+                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                            <Binding Path="!IsSync" />
+                            <Binding Path="!IsBusy" />
+                            <Binding Path="!HasValidationErrors" />
+                        </MultiBinding>
+                    </Button.IsVisible>
+                    <avalonia1:MaterialIcon
+                        Width="20"
+                        Height="20"
+                        Kind="Pencil"
+                        Foreground="{DynamicResource AsvForegroundSuccessBrush}"
+                    />
+                </Button>
+            </Panel>
+            <Border
+                Background="Transparent"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                IsVisible="{Binding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+            >
+                <ToolTip.Tip>
+                    <StackPanel Spacing="8">
+                        <TextBlock Classes="h1" Text="{Binding Header}" />
+                        <TextBlock Classes="description" Text="{Binding Description}" />
+                    </StackPanel>
+                </ToolTip.Tip>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

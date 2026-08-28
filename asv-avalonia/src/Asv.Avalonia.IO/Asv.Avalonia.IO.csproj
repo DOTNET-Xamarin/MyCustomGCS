@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Asv.Avalonia\Asv.Avalonia.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="RS.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RS.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Controls\StatisticView.axaml.cs">
+        <DependentUpon>StatisticView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Shell\Status\ConnectionRateStatusView.axaml.cs">
+        <DependentUpon>ConnectionRateStatusView.axaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      
+      <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="RS.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RS.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Core\Controls\StatisticView.axaml" />
+    </ItemGroup>
+
+</Project>

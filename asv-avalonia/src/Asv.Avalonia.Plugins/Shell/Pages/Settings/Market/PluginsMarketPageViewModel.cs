@@ -1,0 +1,155 @@
+﻿using Asv.Cfg;
+using Asv.Common;
+using Asv.IO;
+using Asv.Modeling;
+using Avalonia.Threading;
+using Material.Icons;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using NuGet.Protocol.Plugins;
+using ObservableCollections;
+using R3;
+
+namespace Asv.Avalonia.Plugins;
+
+public class PluginsMarketPageViewModel : SettingsSubPage
+{
+    public const string PageId = "plugins-market";
+    public const MaterialIconKind PageIcon = MaterialIconKind.Store;
+
+    private readonly IPluginManager _manager;
+    private readonly ObservableList<IPluginSearchInfo> _plugins;
+    private readonly ISynchronizedView<IPluginSearchInfo, PluginInfoViewModel> _view;
+
+    public PluginsMarketPageViewModel()
+        : this(
+            NullTreeSubPageContext<SettingsPageViewModel>.Instance,
+            NullPluginManager.Instance,
+            NullPluginBootloader.Instance,
+            NullLoggerFactory.Instance
+        )
+    {
+        DesignTime.ThrowIfNotDesignMode();
+        _plugins.Add(NullPluginSearchInfo.Instance);
+    }
+
+    public PluginsMarketPageViewModel(
+        ITreeSubPageContext<ISettingsPage> context,
+        IPluginManager manager,
+        IPluginBootloader bootloader,
+        ILoggerFactory loggerFactory
+    )
+        : base(PageId, context)
+    {
+        ArgumentNullException.ThrowIfNull(manager);
+
+        Header = RS.PluginsMarketPageViewModel_Title;
+        Icon = PageIcon;
+
+        _manager = manager;
+
+        _plugins = [];
+
+        var isShowOnlyVerified = new ReactiveProperty<bool>(true).DisposeItWith(Disposable);
+        IsShowOnlyVerified = new HistoricalBoolProperty(
+            nameof(IsShowOnlyVerified),
+            isShowOnlyVerified
+        )
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+        SelectedPlugin = new BindableReactiveProperty<PluginInfoViewModel?>().DisposeItWith(
+            Disposable
+        );
+
+        _view = _plugins
+            .CreateView(info => new PluginInfoViewModel(info, _manager, bootloader, loggerFactory))
+            .DisposeItWith(Disposable);
+        _view.SetParent(this).DisposeItWith(Disposable);
+        _view.DisposeMany().DisposeItWith(Disposable);
+        PluginsView = _view
+            .ToNotifyCollectionChanged(SynchronizationContextCollectionEventDispatcher.Current)
+            .DisposeItWith(Disposable);
+
+        Search = new SearchBoxViewModel(
+            nameof(Search),
+            loggerFactory,
+            SearchImpl,
+            TimeSpan.FromMilliseconds(500)
+        )
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+
+        IsShowOnlyVerified
+            .ViewValue.ObserveOnUIThreadDispatcher()
+            .Skip(1)
+            .Subscribe(_ => Search.Refresh())
+            .DisposeItWith(Disposable);
+    }
+
+    public SearchBoxViewModel Search { get; }
+    public NotifyCollectionChangedSynchronizedViewList<PluginInfoViewModel> PluginsView { get; }
+    public HistoricalBoolProperty IsShowOnlyVerified { get; }
+    public BindableReactiveProperty<PluginInfoViewModel?> SelectedPlugin { get; }
+    public string Header
+    {
+        get;
+        set => SetField(ref field, value);
+    } = string.Empty;
+
+    public MaterialIconKind? Icon
+    {
+        get;
+        set => SetField(ref field, value);
+    }
+
+    private async Task SearchImpl(
+        string? text,
+        IProgress<double> progress,
+        CancellationToken cancel
+    )
+    {
+        var query = new SearchQuery
+        {
+            Name = text,
+            IncludePrerelease = true, // TODO: add Historical IncludePrerelease
+            Skip = 0, // TODO: add Historical Skip
+            Take = 50, // TODO: add Historical Take
+        };
+
+        foreach (var server in _manager.Servers)
+        {
+            query.Sources.Add(server.SourceUri);
+        }
+
+        var items = await _manager.Search(
+            query,
+            new Progress<ProgressMessage>(m => progress.Report(m.Progress)),
+            cancel
+        );
+
+        Dispatcher.UIThread.Invoke(() =>
+        {
+            var selectedId = SelectedPlugin.Value?.Id;
+            SelectedPlugin.OnNext(null);
+            _plugins.RemoveAll();
+            var filtered = IsShowOnlyVerified.ViewValue.Value
+                ? items.Where(x => x.IsVerified)
+                : items;
+            _plugins.AddRange(filtered);
+
+            var first = _view.FirstOrDefault(x => x.Id == selectedId);
+            SelectedPlugin.OnNext(first);
+        });
+    }
+
+    public override IEnumerable<IViewModel> GetChildren()
+    {
+        foreach (var viewModel in _view)
+        {
+            yield return viewModel;
+        }
+
+        yield return Search;
+        yield return IsShowOnlyVerified;
+    }
+}

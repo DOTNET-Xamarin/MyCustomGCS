@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <!--If you are willing to use Windows/MacOS native APIs you will need to create 3 projects.
+        One for Windows with net8.0-windows TFM, one for MacOS with net8.0-macos and one with net8.0 TFM for Linux.-->
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
+        <!--Condition below is needed to remove AvaloniaUI.DiagnosticsSupport package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1"/>
+        <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Asv.Avalonia.Charts\Asv.Avalonia.Charts.csproj" />
+        <ProjectReference Include="..\Asv.Avalonia.Example\Asv.Avalonia.Example.csproj"/>
+        <ProjectReference Include="..\Asv.Avalonia.LauncherReady\Asv.Avalonia.LauncherReady.csproj" />
+        <ProjectReference Include="..\Asv.Avalonia.DC\Asv.Avalonia.DC.csproj" ReferenceOutputAssembly="false"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.Development.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.Production.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Remove="icon.ico" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <DependencyCollectorOutputFileName Condition="'$(DependencyCollectorOutputFileName)' == ''">dependencies.json</DependencyCollectorOutputFileName>
+        <DependencyCollectorTargetFramework Condition="'$(DependencyCollectorTargetFramework)' == ''">$(TargetFramework)</DependencyCollectorTargetFramework>
+    </PropertyGroup>
+
+    <Target Name="RunDependencyCollector" AfterTargets="Build" Condition="'$(DesignTimeBuild)' != 'true'">
+        <PropertyGroup>
+            <DependencyCollectorProject>$(MSBuildProjectDirectory)\..\Asv.Avalonia.DC\Asv.Avalonia.DC.csproj</DependencyCollectorProject>
+            <DependencyCollectorOutputFile>$(TargetDir)$(DependencyCollectorOutputFileName)</DependencyCollectorOutputFile>
+        </PropertyGroup>
+        <MSBuild Projects="$(DependencyCollectorProject)" Targets="GetTargetPath" Properties="Configuration=$(Configuration);TargetFramework=$(DependencyCollectorTargetFramework)">
+            <Output TaskParameter="TargetOutputs" PropertyName="DependencyCollectorTargetPath" />
+        </MSBuild>
+        <Message Importance="High" Text="Generating dependencies list with Asv.Avalonia.DC -&gt; $(DependencyCollectorOutputFile)" Condition="Exists('$(DependencyCollectorTargetPath)')" />
+        <Exec Command="dotnet &quot;$(DependencyCollectorTargetPath)&quot; &quot;$(MSBuildProjectFullPath)&quot; &quot;$(DependencyCollectorOutputFile)&quot;" Condition="Exists('$(DependencyCollectorTargetPath)')" />
+    </Target>
+</Project>

@@ -1,0 +1,1101 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <data name="ChangeLanguageCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сменить язык</value>
+    </data>
+    <data name="ChangeLanguageCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Сменить язык приожения</value>
+    </data>
+    <data name="SettingsAppearanceView_AppLanguage_Title" xml:space="preserve">
+        <value>Язык приложения</value>
+    </data>
+    <data name="ThemeService_Dark" xml:space="preserve">
+        <value>Темная</value>
+    </data>
+    <data name="ThemeService_Light" xml:space="preserve">
+        <value>Светлая</value>
+    </data>
+    <data name="ThemeService_System" xml:space="preserve">
+        <value>Системная</value>
+    </data>
+    <data name="SettingsAppearanceView_AppTheme_Title" xml:space="preserve">
+        <value>Тема приложения</value>
+    </data>
+
+    <data name="SettingsAppearanceView_HubHeader_CommonSettings" xml:space="preserve">
+        <value>Общие настройки</value>
+    </data>
+
+    <data name="SettingsUnitsView_Header_Name" xml:space="preserve">
+        <value>Имя</value>
+    </data>
+
+    <data name="SettingsUnitsView_Header_Description" xml:space="preserve">
+        <value>Описание</value>
+    </data>
+
+    <data name="SettingsUnitsView_Header_Selected" xml:space="preserve">
+        <value>Выбранное</value>
+    </data>
+
+    <data name="SettingsUnitsView_Header_Default" xml:space="preserve">
+        <value>По умолчанию</value>
+    </data>
+    <data name="SettingsUnitsView_Header_Reset" xml:space="preserve">
+        <value>Сброс</value>
+    </data>
+    <data name="SettingsUnitsViewModel_Button_ResetAll" xml:space="preserve">
+        <value>Сбросить всё</value>
+    </data>
+
+    <data name="Distance_Name" xml:space="preserve">
+        <value>Расстояние</value>
+    </data>
+    <data name="Distance_Description" xml:space="preserve">
+        <value>Расстояние</value>
+    </data>
+    <data name="OpenDebugCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Открыть окно отладки</value>
+    </data>
+    <data name="OpenDebugCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Открыть окно отладки</value>
+    </data>
+    <data name="UndoCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Отменить</value>
+    </data>
+    <data name="RedoCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Повторить</value>
+    </data>
+
+    <data name="UndoCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Отменить последнее действие</value>
+    </data>
+    <data name="RedoCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Повторить последнее действие</value>
+    </data>
+    <data name="SettingsKeyMapView_Header_Name" xml:space="preserve">
+        <value>Имя</value>
+    </data>
+    <data name="SettingsKeyMapView_Header_Description" xml:space="preserve">
+        <value>Описание</value>
+    </data>
+
+    <data name="SettingsKeyMapView_Header_DefaultHotKey" xml:space="preserve">
+        <value>Горячая клавиша по умолчанию</value>
+    </data>
+
+    <data name="HomePageViewModel_Title" xml:space="preserve">
+        <value>Домашняя страница</value>
+    </data>
+
+    <data name="SettingsPageViewModel_Title" xml:space="preserve">
+        <value>Настройки</value>
+    </data>
+
+    <data name="SettingsAppearanceViewModel_Name" xml:space="preserve">
+        <value>Внешний вид</value>
+    </data>
+
+    <data name="SettingsUnitsViewModel_Name" xml:space="preserve">
+        <value>Единицы измерения</value>
+    </data>
+
+    <data name="SettingsCommandListViewModel_Name" xml:space="preserve">
+        <value>Список команд</value>
+    </data>
+    <data name="ShellView_WindowControlButton_Close" xml:space="preserve">
+        <value>Закрыть</value>
+    </data>
+    <data name="ShellMessage_CopyDetails" xml:space="preserve">
+        <value>Скопировать детали</value>
+    </data>
+    <data name="ShellMessage_ShowDetails" xml:space="preserve">
+        <value>Показать детали</value>
+    </data>
+    <data name="ShellView_WindowControlButton_Maximize" xml:space="preserve">
+        <value>Во весь экран</value>
+    </data>
+    <data name="ShellView_WindowControlButton_Minimize" xml:space="preserve">
+        <value>Оконный режим</value>
+    </data>
+    <data name="ShellView_WindowControlButton_Collapse" xml:space="preserve">
+        <value>Свернуть</value>
+    </data>
+
+    <data name="ShellView_Toolbar_Edit" xml:space="preserve">
+        <value>Правка</value>
+    </data>
+    <data name="ShellView_Toolbar_Open" xml:space="preserve">
+        <value>Открыть</value>
+    </data>
+    <data name="ShellView_Toolbar_Help" xml:space="preserve">
+        <value>Помощь</value>
+    </data>
+    <data name="ShellView_Toolbar_View" xml:space="preserve">
+        <value>Вид</value>
+    </data>
+    <data name="NauticalMile_UnitItem_Name" xml:space="preserve">
+        <value>Морская миля</value>
+    </data>
+    <data name="NauticalMile_Distance_Description" xml:space="preserve">
+        <value>Расстояние в морских милях</value>
+    </data>
+    <data name="ChangeCurrentUnitItemCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сменить подтип единицы измерения</value>
+    </data>
+    <data name="ChangeCurrentUnitItemCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Сменить текущий подтип единицы измерения у конкретной единицы измерения</value>
+    </data>
+    <data name="Altitude_Name" xml:space="preserve">
+        <value>Высота</value>
+    </data>
+    <data name="Altitude_Description" xml:space="preserve">
+        <value>Высота</value>
+    </data>
+    <data name="Meter_Altitude_Description" xml:space="preserve">
+        <value>Высота в метрах</value>
+    </data>
+    <data name="Meter_UnitItem_Name" xml:space="preserve">
+        <value>Метр</value>
+    </data>
+    <data name="Meter_UnitItem_Symbol" xml:space="preserve">
+        <value>м</value>
+    </data>
+    <data name="Feet_UnitItem_Symbol" xml:space="preserve">
+        <value>фут</value>
+    </data>
+    <data name="Feet_UnitItem_Name" xml:space="preserve">
+        <value>Футы</value>
+    </data>
+    <data name="Feet_Altitude_Description" xml:space="preserve">
+        <value>Высота в футах</value>
+    </data>
+    <data name="AmplitudeModulation_Name" xml:space="preserve">
+        <value>Амплитудная модуляция</value>
+    </data>
+    <data name="AmplitudeModulation_Description" xml:space="preserve">
+        <value>Амплитудная модуляция</value>
+    </data>
+    <data name="Normalized_AmplitudeModulation_Description" xml:space="preserve">
+        <value>Амплитудная модуляция нормализованная</value>
+    </data>
+    <data name="Percent_AmplitudeModulation_Description" xml:space="preserve">
+        <value>Амплитудная модуляция в прцентах</value>
+    </data>
+    <data name="Bearing_Description" xml:space="preserve">
+        <value>Несущая</value>
+    </data>
+    <data name="Bearing_Name" xml:space="preserve">
+        <value>Несущая</value>
+    </data>
+    <data name="Degree_UnitItem_Name" xml:space="preserve">
+        <value>Градусы</value>
+    </data>
+    <data name="Degree_Bearing_Description" xml:space="preserve">
+        <value>Несущая в процентах</value>
+    </data>
+    <data name="DM_UnitItem_Symbol" xml:space="preserve">
+        <value>°′</value>
+    </data>
+    <data name="DM_Bearing_Description" xml:space="preserve">
+        <value>Несущая в градусах и минутах</value>
+    </data>
+    <data name="DdmGp_Name" xml:space="preserve">
+        <value>РГМ (Gp)</value>
+    </data>
+    <data name="DdmGp_Description" xml:space="preserve">
+        <value>Разность глубин модуляции</value>
+    </data>
+    <data name="InParts_UnitItem_Name" xml:space="preserve">
+        <value>В частях</value>
+    </data>
+    <data name="Normalized_DdmGp_Description" xml:space="preserve">
+        <value>РГМ (Gp) нормализованная</value>
+    </data>
+    <data name="Percent_UnitItem_Name" xml:space="preserve">
+        <value>В процентах</value>
+    </data>
+    <data name="Percent_DdmGp_Description" xml:space="preserve">
+        <value>РГМ (Gp) в процентах</value>
+    </data>
+    <data name="Ddm_µA_Symbol" xml:space="preserve">
+        <value>мкА</value>
+    </data>
+    <data name="MicroAmp_UnitItem_Name" xml:space="preserve">
+        <value>Микроампер</value>
+    </data>
+    <data name="MicroAmp_DdmGp_Description" xml:space="preserve">
+        <value>РГМ (Gp) в микроамперах</value>
+    </data>
+    <data name="MicroAmpRu_UnitItem_Name" xml:space="preserve">
+        <value>Микроампер (Рус)</value>
+    </data>
+    <data name="MicroAmpRu_DdmGp_Description" xml:space="preserve">
+        <value>РГМ (Gp) в микроамперах (Рус)</value>
+    </data>
+    <data name="DdmLlz_Name" xml:space="preserve">
+        <value>РГМ (Llz)</value>
+    </data>
+    <data name="DdmLlz_Description" xml:space="preserve">
+        <value>Разность глубин модуляции</value>
+    </data>
+    <data name="Normalized_DdmLlz_Description" xml:space="preserve">
+        <value>РГМ (Llz) нормализованная</value>
+    </data>
+    <data name="Percent_DdmLlz_Description" xml:space="preserve">
+        <value>РГМ (Llz) в процентах</value>
+    </data>
+    <data name="MicroAmp_DdmLlz_Description" xml:space="preserve">
+        <value>РГМ (Llz) в микроамперах</value>
+    </data>
+    <data name="MicroAmpRu_DdmLlz_Description" xml:space="preserve">
+        <value>РГМ (Llz) в микроамперах (Рус)</value>
+    </data>
+    <data name="DM_UnitItem_Name" xml:space="preserve">
+        <value>Градусы и минуты</value>
+    </data>
+    <data name="Angle_Description" xml:space="preserve">
+        <value>Градусы</value>
+    </data>
+    <data name="Degree_Angle_Description" xml:space="preserve">
+        <value>Угол в градусах</value>
+    </data>
+    <data name="Angle_Name" xml:space="preserve">
+        <value>Угол</value>
+    </data>
+    <data name="Degree_UnitItem_Symbol" xml:space="preserve">
+        <value>°</value>
+    </data>
+    <data name="Ms_UnitItem_Name" xml:space="preserve">
+        <value>Минуты и секунды</value>
+    </data>
+    <data name="Ms_Angle_Description" xml:space="preserve">
+        <value>Угол в минутах и секундах</value>
+    </data>
+    <data name="Ms_UnitItem_Symbol" xml:space="preserve">
+        <value>′″</value>
+    </data>
+    <data name="Dms_UnitItem_Symbol" xml:space="preserve">
+        <value>°′″</value>
+    </data>
+    <data name="Dms_UnitItem_Name" xml:space="preserve">
+        <value>Градусы, минуты и секунды</value>
+    </data>
+    <data name="Dms_Angle_Description" xml:space="preserve">
+        <value>Угол в градусах, минутах и секундах</value>
+    </data>
+    <data name="FieldStrength_Name" xml:space="preserve">
+        <value>Напряженность поля</value>
+    </data>
+    <data name="FieldStrength_Description" xml:space="preserve">
+        <value>Напряженность поля</value>
+    </data>
+    <data name="MicroVoltsPerMeter_UnitItem_Name" xml:space="preserve">
+        <value>Микровольт на метр</value>
+    </data>
+    <data name="MicroVoltsPerMeter_FieldStrength_Description" xml:space="preserve">
+        <value>Напряженность поля в микровольтах на метр</value>
+    </data>
+    <data name="FieldStrength_UnitItem_Symbol" xml:space="preserve">
+        <value>мкВ/м</value>
+    </data>
+    <data name="Power_Name" xml:space="preserve">
+        <value>Мощность</value>
+    </data>
+
+    <data name="Power_Description" xml:space="preserve">
+        <value>Мощность</value>
+    </data>
+    <data name="Dbm_UnitItem_Name" xml:space="preserve">
+        <value>Децибел по отношению к 1 милливатт</value>
+    </data>
+    <data name="Dbm_UnitItem_Symbol" xml:space="preserve">
+        <value>дБм</value>
+    </data>
+    <data name="Dbm_Power_Description" xml:space="preserve">
+        <value>Мощность в децибеллах по отношению к 1 милливатту</value>
+    </data>
+    <data name="Frequency_Name" xml:space="preserve">
+        <value>Частота</value>
+    </data>
+    <data name="Frequency_Description" xml:space="preserve">
+        <value>Частота</value>
+    </data>
+    <data name="Hertz_UnitItem_Name" xml:space="preserve">
+        <value>Герцы</value>
+    </data>
+    <data name="Hertz_Frequency_Description" xml:space="preserve">
+        <value>Частота в герцах</value>
+    </data>
+    <data name="Hertz_UnitItem_Symbol" xml:space="preserve">
+        <value>Гц</value>
+    </data>
+    <data name="Gigahertz_UnitItem_Name" xml:space="preserve">
+        <value>Гигагерц</value>
+    </data>
+    <data name="Gigahertz_UnitItem_Symbol" xml:space="preserve">
+        <value>ГГц</value>
+    </data>
+    <data name="Gigahertz_Frequency_Description" xml:space="preserve">
+        <value>Часотота в гигагерцах</value>
+    </data>
+    <data name="Kilohertz_UnitItem_Name" xml:space="preserve">
+        <value>Килогерц</value>
+    </data>
+    <data name="Kilohertz_UnitItem_Symbol" xml:space="preserve">
+        <value>кГц</value>
+    </data>
+    <data name="Kilohertz_Frequency_Description" xml:space="preserve">
+        <value>Частота в килогерцах</value>
+    </data>
+    <data name="Megahertz_UnitItem_Name" xml:space="preserve">
+        <value>Мегагерц</value>
+    </data>
+    <data name="Megahertz_UnitItem_Symbol" xml:space="preserve">
+        <value>МГц</value>
+    </data>
+    <data name="Megahertz_Frequency_Description" xml:space="preserve">
+        <value>Частота в мегагерцах</value>
+    </data>
+    <data name="Latitude_Name" xml:space="preserve">
+        <value>Широта</value>
+    </data>
+    <data name="Latitude_Description" xml:space="preserve">
+        <value>Широта</value>
+    </data>
+    <data name="Degree_Latitude_Description" xml:space="preserve">
+        <value>Широта в градусах</value>
+    </data>
+    <data name="Longitude_Name" xml:space="preserve">
+        <value>Долгота</value>
+    </data>
+    <data name="Longitude_Description" xml:space="preserve">
+        <value>Долгота</value>
+    </data>
+    <data name="Degree_Longitude_Description" xml:space="preserve">
+        <value>Долгота в гадусах</value>
+    </data>
+    <data name="Dms_Latitude_Description" xml:space="preserve">
+        <value>Широта в градусах, минутах и секундах</value>
+    </data>
+    <data name="Dms_Longitude_Description" xml:space="preserve">
+        <value>Долгота в градусах, минутах и секундах</value>
+    </data>
+    <data name="Phase_Description" xml:space="preserve">
+        <value>Фаза</value>
+    </data>
+    <data name="Phase_Name" xml:space="preserve">
+        <value>Фаза</value>
+    </data>
+    <data name="Degree_Phase_Description" xml:space="preserve">
+        <value>Фаза в градусах</value>
+    </data>
+    <data name="Radian_UnitItem_Name" xml:space="preserve">
+        <value>Радиан</value>
+    </data>
+    <data name="Radian_UnitItem_Symbol" xml:space="preserve">
+        <value>Рад</value>
+    </data>
+    <data name="Radian_Phase_Description" xml:space="preserve">
+        <value>Фаза в радианах</value>
+    </data>
+    <data name="Sdm_Name" xml:space="preserve">
+        <value>СГМ</value>
+    </data>
+    <data name="Sdm_Description" xml:space="preserve">
+        <value>Сумма глубин модуляции</value>
+    </data>
+    <data name="Percent_Sdm_Description" xml:space="preserve">
+        <value>СГМ в процентах</value>
+    </data>
+    <data name="Temperature_Name" xml:space="preserve">
+        <value>Температура</value>
+    </data>
+    <data name="Temperature_Description" xml:space="preserve">
+        <value>Температура</value>
+    </data>
+    <data name="Kelvin_UnitItem_Name" xml:space="preserve">
+        <value>Кельвин</value>
+    </data>
+    <data name="Kelvin_Temperature_Description" xml:space="preserve">
+        <value>Температура в кельвинах</value>
+    </data>
+    <data name="Celsius_UnitItem_Name" xml:space="preserve">
+        <value>Цельсий</value>
+    </data>
+    <data name="Celsius_Temperature_Description" xml:space="preserve">
+        <value>Температура в цельсиях</value>
+    </data>
+    <data name="Fahrenheit_UnitItem_Name" xml:space="preserve">
+        <value>Фаренгейт</value>
+    </data>
+    <data name="Fahrenheit_Temperature_Description" xml:space="preserve">
+        <value>Температура в фаренгейтах</value>
+    </data>
+    <data name="Velocity_Name" xml:space="preserve">
+        <value>Скорость</value>
+    </data>
+    <data name="Velocity_Description" xml:space="preserve">
+        <value>Скорость</value>
+    </data>
+    <data name="MetersPerSecond_UnitItem_Name" xml:space="preserve">
+        <value>Метры в секунду</value>
+    </data>
+    <data name="MetersPerSecond_Velocity_Description" xml:space="preserve">
+        <value>Скорость в метрах в секунду</value>
+    </data>
+    <data name="MetersPerSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>м/с</value>
+    </data>
+    <data name="KilometersPerHour_UnitItem_Name" xml:space="preserve">
+        <value>Километры в час</value>
+    </data>
+    <data name="KilometersPerHour_Velocity_Description" xml:space="preserve">
+        <value>Скорость в километрах в час</value>
+    </data>
+    <data name="KilometersPerHour_UnitItem_Symbol" xml:space="preserve">
+        <value>км/ч</value>
+    </data>
+    <data name="MilesPerHour_UnitItem_Name" xml:space="preserve">
+        <value>Мили в час</value>
+    </data>
+    <data name="MilesPerHour_UnitItem_Symbol" xml:space="preserve">
+        <value>миль/ч</value>
+    </data>
+    <data name="MilesPerHour_Velocity_Description" xml:space="preserve">
+        <value>Скорость в милях в час</value>
+    </data>
+    <data name="ChangeDoublePropertyCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Измнить свойство типа дабл</value>
+    </data>
+    <data name="ChangeDoublePropertyCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда меняет значение свойства с типом дабл</value>
+    </data>
+    <data name="ClosePageCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Закрыть страницу</value>
+    </data>
+    <data name="ClosePageCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда закрывает текущую страницу</value>
+    </data>
+    <data name="Meter_Distance_Description" xml:space="preserve">
+        <value>Расстояние в метрах</value>
+    </data>
+    <data name="DialogButton_DontSave" xml:space="preserve">
+        <value>Не сохранять</value>
+    </data>
+    <data name="DialogButton_No" xml:space="preserve">
+        <value>Нет</value>
+    </data>
+    <data name="DialogButton_Save" xml:space="preserve">
+        <value>Сохранить</value>
+    </data>
+    <data name="DialogButton_Yes" xml:space="preserve">
+        <value>Да</value>
+    </data>
+    <data name="RestartApplicationCommand_Info_Name" xml:space="preserve">
+        <value>Перезапустить приложение</value>
+    </data>
+    <data name="RestartApplicationCommand_Info_Description" xml:space="preserve">
+        <value>Команда, перезапускающая приложение</value>
+    </data>
+    <data name="LanguageProperty_RestartDialog_Title" xml:space="preserve">
+        <value>Перезапустить сейчас?</value>
+    </data>
+    <data name="LanguageProperty_RestartDialog_Message" xml:space="preserve">
+        <value>Чтобы изменения вступили в силу, требуется перезапустить приложение</value>
+    </data>
+    <data name="DataSize_Name" xml:space="preserve">
+        <value>Размер данных</value>
+    </data>
+    <data name="DataSize_Description" xml:space="preserve">
+        <value>Единица измерения размера данных</value>
+    </data>
+    <data name="DataRate_Name" xml:space="preserve">
+        <value>Скорость передачи данных</value>
+    </data>
+    <data name="DataRate_Description" xml:space="preserve">
+        <value>Единица измерения скорости передачи данных</value>
+    </data>
+    <data name="BytePerSecond_UnitItem_Name" xml:space="preserve">
+        <value>Байт в секунду</value>
+    </data>
+    <data name="BytePerSecond_DataRate_Description" xml:space="preserve">
+        <value>Скорость передачи данных в байтах в секунду</value>
+    </data>
+    <data name="BytePerSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>Б/с</value>
+    </data>
+    <data name="KilobytePerSecond_UnitItem_Name" xml:space="preserve">
+        <value>Килобайт в секунду</value>
+    </data>
+    <data name="KilobytePerSecond_DataRate_Description" xml:space="preserve">
+        <value>Скорость передачи данных в килобайтах в секунду</value>
+    </data>
+    <data name="KilobytePerSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>кБ/с</value>
+    </data>
+    <data name="MegabytePerSecond_UnitItem_Name" xml:space="preserve">
+        <value>Мегабайт в секунду</value>
+    </data>
+    <data name="MegabytePerSecond_DataRate_Description" xml:space="preserve">
+        <value>Скорость передачи данных в мегабайтах в секунду</value>
+    </data>
+    <data name="MegabytePerSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>МБ/с</value>
+    </data>
+    <data name="GigabytePerSecond_UnitItem_Name" xml:space="preserve">
+        <value>Гигабайт в секунду</value>
+    </data>
+    <data name="GigabytePerSecond_DataRate_Description" xml:space="preserve">
+        <value>Скорость передачи данных в гигабайтах в секунду</value>
+    </data>
+    <data name="GigabytePerSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>ГБ/с</value>
+    </data>
+    <data name="TerabytePerSecond_UnitItem_Name" xml:space="preserve">
+        <value>Терабайт в секунду</value>
+    </data>
+    <data name="TerabytePerSecond_DataRate_Description" xml:space="preserve">
+        <value>Скорость передачи данных в терабайтах в секунду</value>
+    </data>
+    <data name="TerabytePerSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>ТБ/с</value>
+    </data>
+    <data name="Byte_UnitItem_Name" xml:space="preserve">
+        <value>Байт</value>
+    </data>
+    <data name="Byte_DataSize_Description" xml:space="preserve">
+        <value>Размер данных в байтах</value>
+    </data>
+    <data name="Kilobyte_UnitItem_Name" xml:space="preserve">
+        <value>Килобайт</value>
+    </data>
+    <data name="Kilobyte_DataSize_Description" xml:space="preserve">
+        <value>Размер данных в килобайтах</value>
+    </data>
+    <data name="Megabyte_UnitItem_Name" xml:space="preserve">
+        <value>Мегабайт</value>
+    </data>
+    <data name="Megabyte_DataSize_Description" xml:space="preserve">
+        <value>Размер данных в мегабайтах</value>
+    </data>
+    <data name="Gigabyte_UnitItem_Name" xml:space="preserve">
+        <value>Гигабайт</value>
+    </data>
+    <data name="Gigabyte_DataSize_Description" xml:space="preserve">
+        <value>Размер данных в гигабайтах</value>
+    </data>
+    <data name="Terabyte_UnitItem_Name" xml:space="preserve">
+        <value>Терабайт</value>
+    </data>
+    <data name="Terabyte_DataSize_Description" xml:space="preserve">
+        <value>Размер данных в терабайтах</value>
+    </data>
+    <data name="Unit_Terabyte_Abbreviation" xml:space="preserve">
+        <value>ТБ</value>
+    </data>
+    <data name="Unit_Megabyte_Abbreviation" xml:space="preserve">
+        <value>МБ</value>
+    </data>
+    <data name="Unit_Kilobyte_Abbreviation" xml:space="preserve">
+        <value>КБ</value>
+    </data>
+    <data name="Unit_Gigabyte_Abbreviation" xml:space="preserve">
+        <value>ГБ</value>
+    </data>
+    <data name="Unit_Byte_Abbreviation" xml:space="preserve">
+        <value>байт</value>
+    </data>
+    <data name="ChangeStringPropertyCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Изменить свойство типа стринг</value>
+    </data>
+    <data name="ChangeStringPropertyCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда меняет значение свойства с типом строка</value>
+    </data>
+    <data name="ToolsMenu_Name" xml:space="preserve">
+        <value>Инструменты</value>
+    </data>
+    <data name="ToolsMenu_Settings" xml:space="preserve">
+        <value>Настройки</value>
+    </data>
+    <data name="ToolsMenu_Home" xml:space="preserve">
+        <value>Главная</value>
+    </data>
+    <data name="ChangeThemeCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Сменить тему приложения</value>
+    </data>
+    <data name="ChangeThemeCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сменить тему</value>
+    </data>
+    <data name="Not_Available" xml:space="preserve">
+        <value>Н/Д</value>
+    </data>
+    <data name="Mah_UnitItem_Symbol" xml:space="preserve">
+        <value>мА*ч</value>
+    </data>
+    <data name="Mah_UnitItem_Name" xml:space="preserve">
+        <value>Миллиампер в час</value>
+    </data>
+    <data name="Capacity_UnitItem_Description" xml:space="preserve">
+        <value>Ёмкость батареи</value>
+    </data>
+    <data name="Capacity_Name" xml:space="preserve">
+        <value>Ёмкость</value>
+    </data>
+    <data name="ChangeBoolPropertyCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Измнить свойство типа бул</value>
+    </data>
+    <data name="ChangeBoolPropertyCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда меняет значение свойства с типом бул</value>
+    </data>
+    <data name="MilliAmpere_UnitItem_Name" xml:space="preserve">
+        <value>Миллиамперы</value>
+    </data>
+    <data name="MilliAmpere_UnitItem_Symbol" xml:space="preserve">
+        <value>мА</value>
+    </data>
+    <data name="MilliAmpere_Amperage_Description" xml:space="preserve">
+        <value>Сила тока в миллиамперах</value>
+    </data>
+    <data name="Ampere_UnitItem_Symbol" xml:space="preserve">
+        <value>А</value>
+    </data>
+    <data name="Ampere_UnitItem_Name" xml:space="preserve">
+        <value>Амперы</value>
+    </data>
+    <data name="Amperage_AmpereUnit_Description" xml:space="preserve">
+        <value>Сила тока в амперах</value>
+    </data>
+    <data name="Volt_Voltage_Description" xml:space="preserve">
+        <value>Напряжение в вольтах</value>
+    </data>
+    <data name="Volt_UnitItem_Name" xml:space="preserve">
+        <value>Вольты</value>
+    </data>
+    <data name="Volt_UnitItem_Symbol" xml:space="preserve">
+        <value>В</value>
+    </data>
+    <data name="MilliVolt_Voltage_Description" xml:space="preserve">
+        <value>Напряжение в милливольтах</value>
+    </data>
+    <data name="MilliVolt_UnitItem_Name" xml:space="preserve">
+        <value>Милливольты</value>
+    </data>
+    <data name="MilliVolt_UnitItem_Symbol" xml:space="preserve">
+        <value>мВ</value>
+    </data>
+    <data name="Voltage_Name" xml:space="preserve">
+        <value>Напряжение</value>
+    </data>
+    <data name="Voltage_Description" xml:space="preserve">
+        <value>Напряжение</value>
+    </data>
+    <data name="Amperage_Name" xml:space="preserve">
+        <value>Сила тока</value>
+    </data>
+    <data name="Amperage_Description" xml:space="preserve">
+        <value>Сила тока</value>
+    </data>
+    <data name="Progress_Description" xml:space="preserve">
+        <value>Прогресс</value>
+    </data>
+    <data name="Progress_Name" xml:space="preserve">
+        <value>Прогресс</value>
+    </data>
+    <data name="Percent_Progress_Description" xml:space="preserve">
+        <value>Значение прогресса в процентах</value>
+    </data>
+    <data name="Mah_Capacity_Description" xml:space="preserve">
+        <value>Емкость в миллиамперах в час</value>
+    </data>
+    <data name="Normalized_Progress_Description" xml:space="preserve">
+        <value>Прогресс нормализованный</value>
+    </data>
+    <data name="OpenSettingsCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая открывает настройки</value>
+    </data>
+    <data name="OpenSettingsCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Открыть настройки</value>
+    </data>
+    <data name="OpenHomePageCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая открывает настройки</value>
+    </data>
+    <data name="OpenHomePageCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Команда, которая открывает домашнюю страницу</value>
+    </data>
+    <data name="SettingsCommandListView_SearchBar_Watermark" xml:space="preserve">
+        <value>Поиск</value>
+    </data>
+    <data name="SettingsCommandListView_ResetButton_Content" xml:space="preserve">
+        <value>Сбросить всё</value>
+    </data>
+    <data name="SettingsCommandListView_HotKey_Header" xml:space="preserve">
+        <value>Горячая клавиша</value>
+    </data>
+    <data name="SettingsCommandListView_Name_Header" xml:space="preserve">
+        <value>Команда</value>
+    </data>
+    <data name="SettingsCommandListView_Description_Header" xml:space="preserve">
+        <value>Описание</value>
+    </data>
+    <data name="SettingsCommandListView_Source_Header" xml:space="preserve">
+        <value>Источник</value>
+    </data>
+    <data name="SettingsCommandListView_DataGrid_Command_Header" xml:space="preserve">
+        <value>Название</value>
+    </data>
+    <data name="SettingsCommandListView_DataGrid_CustomHotKey_Header" xml:space="preserve">
+        <value>Своя комбинация</value>
+    </data>
+    <data name="SettingsCommandListView_DataGrid_DefaultHotKey_Header" xml:space="preserve">
+        <value>По умолчанию</value>
+    </data>
+    <data name="SettingsCommandListView_DataGrid_Description_Header" xml:space="preserve">
+        <value>Описание</value>
+    </data>
+    <data name="SettingsCommandListView_DataGrid_Source_Header" xml:space="preserve">
+        <value>Источник</value>
+    </data>
+    <data name="HotKeyViewModel_HotKeyCaptureDialog_Title" xml:space="preserve">
+        <value>Редактировать</value>
+    </data>
+    <data name="HotKeyViewModel_HotKeyCaptureDialog_Message" xml:space="preserve">
+        <value>Отредактировать горячую клавишу</value>
+    </data>
+    <data name="RttBox_NetworkError_ToolTip" xml:space="preserve">
+        <value>Ошибка подключения</value>
+    </data>
+    <data name="Normalized_SDM_Description" xml:space="preserve">
+        <value>СГМ нормализованный</value>
+    </data>
+    <data name="HomePageView_DeviceBrowser_Title" xml:space="preserve">
+        <value>Браузер устройств</value>
+    </data>
+    <data name="HomePageView_DeviceBrowser_NoneText" xml:space="preserve">
+        <value>Устройство не выбрано</value>
+    </data>
+    <data name="LogViewer_CommandInfo_Name" xml:space="preserve">
+        <value>Открыть просмотр логов</value>
+    </data>
+    <data name="LogViewer_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая открывает просмотр логов</value>
+    </data>
+    <data name="LogViewerView_LogMessagesList_Title" xml:space="preserve">
+        <value>Список логов</value>
+    </data>
+    <data name="LogViewerView_LogMessagesList_TimeSection" xml:space="preserve">
+        <value>Время</value>
+    </data>
+    <data name="LogViewerView_LogMessagesList_CategorySection" xml:space="preserve">
+        <value>Категория</value>
+    </data>
+    <data name="LogViewerView_LogMessagesList_MessageSection" xml:space="preserve">
+        <value>Сообщение</value>
+    </data>
+    <data name="LogViewerViewModel_Title" xml:space="preserve">
+        <value>Просмотр логов</value>
+    </data>
+    <data name="LogViewerViewModel_Pagination_SkippedFiltered" xml:space="preserve">
+        <value>Пропущено {0}, отфильтровано {1} сообщений из {2}</value>
+    </data>
+    <data name="LogViewerViewModel_Pagination_SkippedFilteredBy" xml:space="preserve">
+        <value>Пропущено {0}, отфильтровано {1} сообщений из {2} за {3:F0} мс</value>
+    </data>
+    <data name="ShellView_UnsplitAllTabsButton_ToolTip" xml:space="preserve">
+        <value>Убрать разделение вкладок</value>
+    </data>
+    <data name="CancelCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Отмена</value>
+    </data>
+    <data name="CancelCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда отменяет текущую операцию</value>
+    </data>
+    <data name="RefreshCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Обновить</value>
+    </data>
+    <data name="RefreshCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая производит обновление</value>
+    </data>
+    <data name="FocusSearchBoxCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Перейти к строке поиска</value>
+    </data>
+    <data name="FocusSearchBoxCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая фокусируется на окне поиска</value>
+    </data>
+    <data name="TextSearchCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Поиск текста</value>
+    </data>
+    <data name="TextSearchCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда для поиска текста в текущем контексте</value>
+    </data>
+    <data name="SearchBoxView_MainTextBox_Watermark" xml:space="preserve">
+        <value>Искать</value>
+    </data>
+    <data name="OpenLogViewerCommand_Action_Title" xml:space="preserve">
+        <value>Просмотр логов</value>
+    </data>
+    <data name="OpenLogViewerCommand_Action_Description" xml:space="preserve">
+        <value>Открыть просмотр логов</value>
+    </data>
+    <data name="OpenSettingsCommand_Action_Title" xml:space="preserve">
+        <value>Настройки</value>
+    </data>
+    <data name="OpenSettingsCommand_Action_Description" xml:space="preserve">
+        <value>Открыть настройки</value>
+    </data>
+    <data name="ClearCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Очистка</value>
+    </data>
+    <data name="ClearCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда выполняет очистку</value>
+    </data>
+    <data name="PaginationCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Изменить пагинацию</value>
+    </data>
+    <data name="PaginationCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда изменяет параметры пагинации</value>
+    </data>
+    <data name="ChangeEnumPropertyCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Изменить свойство типа перечисления</value>
+    </data>
+    <data name="ChangeEnumPropertyCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда изменяет свойство типа перечисления</value>
+    </data>
+    <data name="DialogButton_Cancel" xml:space="preserve">
+        <value>Отмена</value>
+    </data>
+    <data name="SettingsCommandListView_CommandsSortingType_All" xml:space="preserve">
+        <value>Все</value>
+    </data>
+    <data name="SettingsCommandListView_CommandsSortingType_WithHotkeysOnly" xml:space="preserve">
+        <value>С горячими клавишами</value>
+    </data>
+    <data name="SettingsCommandListView_CommandsSortingType_WithoutHotkeysOnly" xml:space="preserve">
+        <value>Без горячих клавиш</value>
+    </data>
+    <data name="SaveLayoutToFileCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сохранить лейаут в файл</value>
+    </data>
+    <data name="SaveLayoutToFileCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда сохраняет лейаут текущей страницы в файл</value>
+    </data>
+    <data name="SaveAllLayoutToFileCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сохранить весь лейаут в файл</value>
+    </data>
+    <data name="SaveAllLayoutToFileCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда сохраняет лейаут всего приложения в файл</value>
+    </data>
+    <data name="ViewSaveMenu_Header" xml:space="preserve">
+        <value>Сохранить</value>
+    </data>
+    <data name="ViewSaveAllMenu_Header" xml:space="preserve">
+        <value>Сохранить все</value>
+    </data>
+    <data name="PageViewModel_CloseConfirmDialog_Title" xml:space="preserve">
+        <value>У вас есть несохраненные изменения. Всё равно закрыть?</value>
+    </data>
+    <data name="DesktopShellViewModel_ExitConfirmDialog_Title" xml:space="preserve">
+        <value>Данная страница содержит несохраненные изменения. Продолжить?</value>
+    </data>
+    <data name="GeoPointPropertyViewModel_Title" xml:space="preserve">
+        <value>Позиция</value>
+    </data>
+    <data name="GeoPointPropertyViewModel_Description" xml:space="preserve">
+        <value>Позиция</value>
+    </data>
+    <data name="Latitude_ShortName" xml:space="preserve">
+        <value>Шир</value>
+    </data>
+    <data name="Longitude_ShortName" xml:space="preserve">
+        <value>Дол</value>
+    </data>
+    <data name="Altitude_ShortName" xml:space="preserve">
+        <value>Выс</value>
+    </data>
+    <data name="CreateFileCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Открыть файл</value>
+    </data>
+    <data name="CreateFileCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда создания файла</value>
+    </data>
+    <data name="CreateFileCommand_SelectFile" xml:space="preserve">
+        <value>Выберите файл</value>
+    </data>
+    <data name="OpenFileCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая открывает файл</value>
+    </data>
+    <data name="OpenFileCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Открыть файл</value>
+    </data>
+    <data name="OpenFileCommand_SelectFile" xml:space="preserve">
+        <value>Выберите файл</value>
+    </data>
+    <data name="CreateMenu_Header" xml:space="preserve">
+        <value>Создать</value>
+    </data>
+    <data name="NextPageCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Следующая страница</value>
+    </data>
+    <data name="NextPageCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая совершает переход на следующую страницу</value>
+    </data>
+    <data name="PreviousPageCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Предыдущая страница</value>
+    </data>
+    <data name="PreviousPageCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая совершает переход на предыдущую страницу</value>
+    </data>
+    <data name="SaveCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сохранить</value>
+    </data>
+    <data name="SaveCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая сохраняет изменения</value>
+    </data>
+    <data name="SaveAsCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сохранить как</value>
+    </data>
+    <data name="SaveAsCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая сохраняет изменения в выбранный файл</value>
+    </data>
+    <data name="ChangeIntPropertyCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Изменить свойство целочисленного типа</value>
+    </data>
+    <data name="ChangeIntPropertyCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда меняет значение свойства с целочисленным типом</value>
+    </data>
+    <data name="ValidationException_Unknown_Message" xml:space="preserve">
+        <value>Валидация провалилась</value>
+    </data>
+    <data name="Second_UnitItem_Name" xml:space="preserve">
+        <value>Секунда</value>
+    </data>
+    <data name="Second_TimeSpan_Description" xml:space="preserve">
+        <value>Время в секундах</value>
+    </data>
+    <data name="Second_UnitItem_Symbol" xml:space="preserve">
+        <value>сек</value>
+    </data>
+    <data name="Minute_UnitItem_Name" xml:space="preserve">
+        <value>Минута</value>
+    </data>
+    <data name="Minute_TimeSpan_Description" xml:space="preserve">
+        <value>Время в минутах</value>
+    </data>
+    <data name="Minute_UnitItem_Symbol" xml:space="preserve">
+        <value>мин</value>
+    </data>
+    <data name="Hour_UnitItem_Name" xml:space="preserve">
+        <value>Час</value>
+    </data>
+    <data name="Hour_TimeSpan_Description" xml:space="preserve">
+        <value>Время в часах</value>
+    </data>
+    <data name="Hour_UnitItem_Symbol" xml:space="preserve">
+        <value>ч</value>
+    </data>
+    <data name="HourMinuteSecond_TimeSpan_Description" xml:space="preserve">
+        <value>Длительность в ч:м:с</value>
+    </data>
+    <data name="HourMinuteSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>ч:м:с</value>
+    </data>
+    <data name="HourMinuteSecond_UnitItem_Name" xml:space="preserve">
+        <value>Часы, минуты и секунды</value>
+    </data>
+    <data name="Millisecond_UnitItem_Name" xml:space="preserve">
+        <value>Миллисекунда</value>
+    </data>
+    <data name="Millisecond_TimeSpan_Description" xml:space="preserve">
+        <value>Время в миллисекундах</value>
+    </data>
+    <data name="Millisecond_UnitItem_Symbol" xml:space="preserve">
+        <value>мс</value>
+    </data>
+    <data name="Millisecond_UnitItem_NotIntegerException" xml:space="preserve">
+        <value>Дробные миллисекунды не поддерживаются, введите целое число</value>
+    </data>
+    <data name="MinuteSecond_UnitItem_Name" xml:space="preserve">
+        <value>Минуты и секунды</value>
+    </data>
+    <data name="MinuteSecond_TimeSpan_Description" xml:space="preserve">
+        <value>Длительность в минутах и секундах</value>
+    </data>
+    <data name="MinuteSecond_UnitItem_Symbol" xml:space="preserve">
+        <value>мин/сек</value>
+    </data>
+    <data name="HourMinute_UnitItem_Name" xml:space="preserve">
+        <value>Часы и минуты</value>
+    </data>
+    <data name="HourMinute_TimeSpan_Description" xml:space="preserve">
+        <value>Длительность в часах и минутах</value>
+    </data>
+    <data name="HourMinute_UnitItem_Symbol" xml:space="preserve">
+        <value>ч/мин</value>
+    </data>
+    <data name="TimeSpan_Name" xml:space="preserve">
+        <value>Длительность</value>
+    </data>
+    <data name="TimeSpan_Description" xml:space="preserve">
+        <value>Время</value>
+    </data>
+    <data name="TimeSpanComposite_UnitItem_InvalidFormatException" xml:space="preserve">
+        <value>Неверный формат. Ожидался '{0}'</value>
+    </data>
+    <data name="TimeSpanComposite_UnitItem_UnspecifiedTimeException" xml:space="preserve">
+        <value>Укажите все компоненты времени</value>
+    </data>
+    <data name="UnitException_UnitItemValueIsNan_Message" xml:space="preserve">
+        <value>Значение не является числом</value>
+    </data>
+    <data name="ResetUnitsCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая сбрасывает единицы измерения</value>
+    </data>
+    <data name="ResetUnitsCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сбросить единицы измерения</value>
+    </data>
+    <data name="Percent_Throttle_Description" xml:space="preserve">
+        <value>Мощность в процентах</value>
+    </data>
+    <data name="Normalized_UnitItem_Name" xml:space="preserve">
+        <value>Нормализованное значение</value>
+    </data>
+    <data name="Normalized_Throttle_Description" xml:space="preserve">
+        <value>Нормализованная мощность</value>
+    </data>
+    <data name="Throttle_Name" xml:space="preserve">
+        <value>Мощность</value>
+    </data>
+    <data name="Throttle_Description" xml:space="preserve">
+        <value>Мощность</value>
+    </data>
+    <data name="ResetCommandHotKeysCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, которая сбрасывает все горячие клавиши</value>
+    </data>
+    <data name="ResetCommandHotKeysCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Сбросить горячие клавиши</value>
+    </data>
+    <data name="OpenMenuExtender_ClearRecent_Header" xml:space="preserve">
+        <value>Очистить недавние</value>
+    </data>
+    <data name="DashboardWidget_TileVisibility_Header" xml:space="preserve">
+        <value>Показать/скрыть</value>
+    </data>
+    <data name="TileDensity_Regular" xml:space="preserve">
+        <value>Обычный</value>
+    </data>
+    <data name="TileDensity_Inline" xml:space="preserve">
+        <value>Компактный</value>
+    </data>
+</root>

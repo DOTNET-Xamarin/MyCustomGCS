@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using Asv.Common;
+using Material.Icons;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using R3;
+
+namespace Asv.Avalonia.Example;
+
+public class InfoBoxControlsPageViewModel : ControlsGallerySubPage
+{
+    public const string PageId = "info-box-controls";
+    public const MaterialIconKind PageIcon = MaterialIconKind.InfoBox;
+
+    private readonly ReactiveProperty<InfoBarSeverity> _severity;
+    private readonly ReactiveProperty<string?> _infoBoxMessage;
+    private readonly ReactiveProperty<string?> _infoBoxTitle;
+
+    public InfoBoxControlsPageViewModel()
+        : this(
+            NullTreeSubPageContext<ControlsGalleryPageViewModel>.Instance,
+            NullLoggerFactory.Instance
+        )
+    {
+        DesignTime.ThrowIfNotDesignMode();
+    }
+
+    public InfoBoxControlsPageViewModel(
+        ITreeSubPageContext<IControlsGalleryPage> context,
+        ILoggerFactory loggerFactory
+    )
+        : base(PageId, context)
+    {
+        _severity = new ReactiveProperty<InfoBarSeverity>(
+            InfoBarSeverity.Informational
+        ).DisposeItWith(Disposable);
+        _infoBoxTitle = new ReactiveProperty<string?>(
+            RS.InfoBoxControlsPageViewModel_Example_Title
+        ).DisposeItWith(Disposable);
+        _infoBoxMessage = new ReactiveProperty<string?>(
+            RS.InfoBoxControlsPageViewModel_Example_Message
+        ).DisposeItWith(Disposable);
+
+        Severity = new HistoricalEnumProperty<InfoBarSeverity>("severity", _severity)
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+        InfoBoxTitle = new HistoricalStringProperty("title", _infoBoxTitle, loggerFactory)
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+        InfoBoxMessage = new HistoricalStringProperty("message", _infoBoxMessage, loggerFactory)
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+    }
+
+    public HistoricalEnumProperty<InfoBarSeverity> Severity { get; }
+    public HistoricalStringProperty InfoBoxTitle { get; }
+    public HistoricalStringProperty InfoBoxMessage { get; }
+
+    public override IEnumerable<IViewModel> GetChildren()
+    {
+        yield return Severity;
+        yield return InfoBoxTitle;
+        yield return InfoBoxMessage;
+
+        foreach (var child in base.GetChildren())
+        {
+            yield return child;
+        }
+    }
+}

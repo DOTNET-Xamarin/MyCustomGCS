@@ -1,0 +1,66 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:map="clr-namespace:Asv.Avalonia.GeoMap;assembly=Asv.Avalonia.GeoMap"
+    xmlns:example="clr-namespace:Asv.Avalonia.Example"
+    mc:Ignorable="d"
+    d:DesignWidth="800"
+    d:DesignHeight="450"
+    x:DataType="example:MapControlsPageViewModel"
+    x:Class="Asv.Avalonia.Example.MapControlsPageView"
+>
+    <Design.DataContext>
+        <example:MapControlsPageViewModel />
+    </Design.DataContext>
+    <Panel>
+        <map:MapView x:Name="PART_Map" DataContext="{Binding MapViewModel}" />
+        <Slider
+            VerticalAlignment="Top"
+            Minimum="0"
+            Maximum="360"
+            Value="{Binding MapViewModel.Rotation.Value}"
+        />
+        <map:MapZoomControl
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="8,40,8,8"
+            Zoom="{Binding MapViewModel.Zoom.Value, Mode=TwoWay}"
+            MinZoom="{Binding MapViewModel.MinZoom.Value}"
+            MaxZoom="{Binding MapViewModel.MaxZoom.Value}"
+        />
+        <map:MapScaleControl
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="8,8,8,60"
+            CenterMap="{Binding MapViewModel.CenterMap.Value}"
+            Zoom="{Binding MapViewModel.Zoom.Value}"
+            Provider="{Binding MapViewModel.CurrentProvider.Value}"
+            UnitService="{Binding UnitService}"
+        />
+        <map:MapCompass
+            Rotation="{Binding MapViewModel.Rotation.Value}"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            DeadZone="0"
+            GestureSurface="{Binding #PART_Map}"
+            Margin="8"
+        />
+        <map:TileProviderSelectorView
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="8"
+            DataContext="{Binding TileProviderSelectorViewModel}"
+        />
+        <map:MapRuler
+            x:Name="PART_Ruler"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="8"
+            Map="{Binding MapViewModel}"
+            UnitService="{Binding UnitService}"
+            RulerChanged="OnRulerChanged"
+        />
+    </Panel>
+</UserControl>

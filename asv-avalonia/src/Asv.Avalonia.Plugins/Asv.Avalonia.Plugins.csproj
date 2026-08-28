@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NuGet.Packaging" Version="7.6.0" />
+        <PackageReference Include="NuGet.Protocol" Version="7.6.0" />
+        <PackageReference Include="NuGet.Resolver" Version="7.6.0"/>
+        <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+      <ProjectReference Include="..\Asv.Avalonia\Asv.Avalonia.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="RS.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RS.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="RS.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RS.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Shell\Pages\Settings\Sources\Dialog\SourceView.axaml.cs">
+        <DependentUpon>SourceView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Shell\Pages\Settings\Sources\SettingsPluginsSourcesView.axaml.cs">
+        <DependentUpon>PluginsSourcesView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Core\" />
+      <Folder Include="Shell\" />
+      <Folder Include="Shell\Pages\Settings\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Shell\Pages\Settings\Market\PluginsMarketPageView.axaml" />
+    </ItemGroup>
+
+</Project>

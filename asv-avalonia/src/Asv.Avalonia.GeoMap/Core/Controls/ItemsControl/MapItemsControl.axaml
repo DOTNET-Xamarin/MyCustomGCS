@@ -1,0 +1,109 @@
+﻿<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Asv.Avalonia.GeoMap"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    xmlns:avalonia1="clr-namespace:Asv.Avalonia;assembly=Asv.Avalonia"
+>
+    <Design.PreviewWith>
+        <Panel Width="1000" Height="250">
+            <controls:MapItemsControl CenterMap="{controls:GeoPoint 53,53}">
+                <controls:MapItem
+                    Location="{controls:GeoPoint 53,53}"
+                    Rotation="45"
+                    CenterX="{controls:HorizontalOffset Center}"
+                    CenterY="{controls:VerticalOffset Center}"
+                >
+                    <avalonia:MaterialIcon
+                        Foreground="BlueViolet"
+                        Width="40"
+                        Height="40"
+                        Kind="Navigation"
+                    />
+                </controls:MapItem>
+                <controls:MapItem
+                    Location="{controls:GeoPoint 53,53.4}"
+                    IsReadOnly="True"
+                    CenterX="{controls:HorizontalOffset Center}"
+                    CenterY="{controls:VerticalOffset Bottom}"
+                >
+                    <controls:MapItem.Polygon></controls:MapItem.Polygon>
+                    <avalonia:MaterialIcon
+                        x:Name="PART_Icon"
+                        Width="40"
+                        Height="40"
+                        Kind="MapMarker"
+                    />
+                </controls:MapItem>
+            </controls:MapItemsControl>
+            <TextBlock
+                HorizontalAlignment="Right"
+                Text="{ReflectionBinding SelectedItem, ElementName=MAP}"
+            />
+            <TextBlock
+                HorizontalAlignment="Left"
+                Text="{ReflectionBinding SelectedItems.Count, ElementName=MAP}"
+            />
+        </Panel>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|MapItemsControl">
+        <Setter Property="EnableWheelZoom" Value="True" />
+        <Setter Property="EnableTouchpadGestures" Value="True" />
+        <Setter Property="WheelDiscreteStepThreshold" Value="0.95" />
+        <Setter Property="AnnotationTemplate">
+            <DataTemplate x:DataType="controls:MapItem">
+                <TextBlock Text="{Binding Location}"></TextBlock>
+            </DataTemplate>
+        </Setter>
+        <!-- Set Defaults -->
+        <Setter Property="ItemsPanel">
+            <ItemsPanelTemplate>
+                <controls:MapCanvas
+                    x:Name="PART_MapCanvas"
+                    Provider="{TemplateBinding Provider}"
+                    CenterMap="{TemplateBinding CenterMap}"
+                    MapRotation="{TemplateBinding Rotation}"
+                    Zoom="{TemplateBinding Zoom}"
+                />
+            </ItemsPanelTemplate>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <controls:MapBackground
+                        HorizontalAlignment="Stretch"
+                        Rotation="{TemplateBinding Rotation}"
+                        IsDebug="False"
+                        Zoom="{TemplateBinding Zoom}"
+                        CenterMap="{TemplateBinding CenterMap}"
+                        Provider="{TemplateBinding Provider}"
+                    />
+                    <controls:AnnotationLayer
+                        x:Name="PART_AnnotationLayer"
+                        ItemTemplate="{TemplateBinding AnnotationTemplate}"
+                        AnnotationRadius="{TemplateBinding AnnotationRadius}"
+                        Source="{TemplateBinding}"
+                    />
+                    <controls:PolygonLayer x:Name="PART_PolygonLayer" Source="{TemplateBinding}" />
+                    <ItemsPresenter
+                        Name="PART_ItemsPresenter"
+                        ItemsPanel="{TemplateBinding ItemsPanel}"
+                        Margin="{TemplateBinding Padding}"
+                    />
+                    <Canvas>
+                        <Rectangle
+                            Canvas.Left="{TemplateBinding SelectionLeft}"
+                            Canvas.Top="{TemplateBinding SelectionTop}"
+                            Width="{TemplateBinding SelectionWidth}"
+                            Height="{TemplateBinding SelectionHeight}"
+                            IsVisible="{TemplateBinding DragState, Converter={x:Static avalonia1:EnumToBooleanConverter.Instance}, ConverterParameter=SelectRectangle }"
+                            Stroke="{TemplateBinding SelectionStroke}"
+                            StrokeThickness="{TemplateBinding SelectionStrokeThickness}"
+                        />
+                    </Canvas>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

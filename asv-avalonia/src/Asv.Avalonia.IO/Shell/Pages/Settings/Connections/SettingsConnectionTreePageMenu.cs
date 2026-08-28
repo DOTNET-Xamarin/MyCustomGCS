@@ -1,0 +1,20 @@
+using Asv.Common;
+using Asv.Modeling;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using R3;
+
+namespace Asv.Avalonia.IO;
+
+public class SettingsConnectionTreePageMenu : TreePageMenuItem
+{
+    public SettingsConnectionTreePageMenu(ILoggerFactory loggerFactory)
+        : base(
+            SettingsConnectionViewModel.SubPageId,
+            RS.SettingsPageExtension_TreePage_Title,
+            SettingsConnectionViewModel.Icon,
+            new NavId(SettingsConnectionViewModel.SubPageId),
+            NavId.Empty
+        ) { }
+}

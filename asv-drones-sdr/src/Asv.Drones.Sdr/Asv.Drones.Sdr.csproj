@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="$(SolutionDir)Asv.Drones.Sdr.Custom.props" />
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Configurations>Debug;Release;</Configurations>
+        <Platforms>AnyCPU</Platforms>
+        <AssemblyVersion>$(ProductVersion)</AssemblyVersion>
+        <FileVersion>$(ProductVersion)</FileVersion>
+        <ApplicationVersion>$(ProductVersion)</ApplicationVersion>
+        <Version>$(ProductVersion)</Version>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="Asv.Cfg" Version="$(AsvCommonVersion)" />
+        <PackageReference Include="Asv.Common" Version="$(AsvCommonVersion)" />
+        <PackageReference Include="Asv.IO" Version="$(AsvCommonVersion)" />
+        <PackageReference Include="System.ComponentModel.Composition" Version="$(CompositionVersion)" />
+        <PackageReference Include="NLog" Version="$(NLogVersion)" />
+        <PackageReference Include="Spectre.Console" Version="0.46.0" />
+        <PackageReference Include="Spectre.Console.Cli" Version="0.46.0" />
+        
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Asv.Drones.Sdr.Core\Asv.Drones.Sdr.Core.csproj" />
+        <ProjectReference Include="..\Asv.Drones.Sdr.Virtual\Asv.Drones.Sdr.Virtual.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="NLog.config">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Content Include="..\Asv.Drones.Sdr.Custom.props">
+        <Link>Asv.Drones.Sdr.Custom.props</Link>
+      </Content>
+    </ItemGroup>
+
+</Project>

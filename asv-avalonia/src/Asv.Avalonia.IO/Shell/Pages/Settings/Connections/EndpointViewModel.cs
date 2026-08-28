@@ -1,0 +1,99 @@
+﻿using Asv.Common;
+using Asv.IO;
+using Asv.Modeling;
+using Material.Icons;
+using Microsoft.Extensions.Logging;
+using ObservableCollections;
+
+namespace Asv.Avalonia.IO;
+
+public class EndpointViewModel : HeadlinedViewModel
+{
+    private readonly IProtocolEndpoint? _protocolEndpoint;
+    private readonly IncrementalRateCounter _rxBytes;
+    private readonly IncrementalRateCounter _txBytes;
+    private readonly IncrementalRateCounter _rxPackets;
+    private readonly IncrementalRateCounter _txPackets;
+    private readonly IDataFormatter _byteRateFormatter;
+
+    private readonly IUnit _frequencyUnit;
+
+    private EndpointViewModel(string id, IUnitService unitService, TimeProvider timeProvider)
+        : base(id)
+    {
+        _rxBytes = new IncrementalRateCounter(5, timeProvider);
+        _txBytes = new IncrementalRateCounter(5, timeProvider);
+        _rxPackets = new IncrementalRateCounter(5, timeProvider);
+        _txPackets = new IncrementalRateCounter(5, timeProvider);
+        _frequencyUnit =
+            unitService.Units[FrequencyUnit.Id]
+            ?? throw new UnitException($"Unit {FrequencyUnit.Id} was not found");
+        _byteRateFormatter = unitService.CreateByteRateFormatter();
+        Icon = MaterialIconKind.SwapVertical;
+        TagsSource.DisposeRemovedItems().DisposeItWith(Disposable);
+        TagsView = TagsSource
+            .ToNotifyCollectionChangedSlim(SynchronizationContextCollectionEventDispatcher.Current)
+            .DisposeItWith(Disposable);
+        TagsSource.Add(
+            RxTag = new TagViewModel("rx")
+            {
+                Icon = MaterialIconKind.ArrowDownBold,
+                Color = AsvColorKind.Success,
+                Value = _byteRateFormatter.Print(double.NaN),
+            }
+        );
+        TagsSource.Add(
+            TxTag = new TagViewModel("tx")
+            {
+                Icon = MaterialIconKind.ArrowUpBold,
+                Color = AsvColorKind.Success,
+                Value = _byteRateFormatter.Print(double.NaN),
+            }
+        );
+    }
+
+    internal EndpointViewModel()
+        : this(DesignTime.Id.TypeId, DesignTime.UnitService, TimeProvider.System)
+    {
+        DesignTime.ThrowIfNotDesignMode();
+        Header = "127.0.0.1:7574";
+    }
+
+    public EndpointViewModel(
+        IProtocolEndpoint protocolEndpoint,
+        IUnitService unitService,
+        ILoggerFactory loggerFactory,
+        TimeProvider timeProvider
+    )
+        : this(protocolEndpoint.Id, unitService, timeProvider)
+    {
+        _protocolEndpoint = protocolEndpoint;
+        Header = protocolEndpoint.Id;
+    }
+
+    public void UpdateStatistic()
+    {
+        var rxBytes = _byteRateFormatter.Print(
+            _rxBytes.Calculate(_protocolEndpoint?.Statistic.RxBytes ?? 0)
+        );
+        var txBytes = _byteRateFormatter.Print(
+            _txBytes.Calculate(_protocolEndpoint?.Statistic.TxBytes ?? 0)
+        );
+        var rxPackets = _rxPackets
+            .Calculate(_protocolEndpoint?.Statistic.RxMessages ?? 0)
+            .ToString("F1");
+        var txPackets = _txPackets
+            .Calculate(_protocolEndpoint?.Statistic.TxMessages ?? 0)
+            .ToString("F1");
+        var gzUnitSymbol = _frequencyUnit.AvailableUnits[FrequencyHertzUnitItem.Id].Symbol;
+        RxTag.Value = $"{rxBytes} / {rxPackets} {gzUnitSymbol}";
+        TxTag.Value = $"{txBytes} / {txPackets} {gzUnitSymbol}";
+    }
+
+    public TagViewModel RxTag { get; }
+    public TagViewModel TxTag { get; }
+
+    protected ObservableList<TagViewModel> TagsSource { get; } = [];
+
+    public NotifyCollectionChangedSynchronizedViewList<TagViewModel> TagsView { get; }
+}

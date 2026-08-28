@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Asv.Avalonia\Asv.Avalonia.csproj" />
+        <PackageReference Include="Avalonia" Version="12.1.1" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.8" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.8" />
+        
+        <PackageReference Include="Roslynator.Analyzers" Version="4.15.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ZLogger" Version="2.5.10" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Controls\MapView\MapItemsControl.axaml.cs">
+        <DependentUpon>MapView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Controls\MapView\MapItem.axaml.cs">
+        <DependentUpon>MapViewItem.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Remove="Diialog\TestDialogItemTextViewModel.cs" />
+      <Compile Remove="Diialog\TestDialogItemTextView.axaml.cs" />
+      <Compile Update="PositionDialog\GeoPointDialogView.axaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="RS.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RS.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Core\Controls\PropertyEditor\Properties\GeoPoint\PropertyGeoPointView.axaml.cs">
+        <DependentUpon>PropertyGeoPointView.axaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="RS.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RS.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <AdditionalFiles Include="Core\Controls\Attitude\Attitude.axaml" />
+      <AdditionalFiles Include="Core\Controls\MapCompass\MapCompass.axaml" />
+      <AdditionalFiles Include="Core\Controls\ItemsControl\MapItem.axaml" />
+      <AdditionalFiles Include="Core\Controls\ItemsControl\MapItemsControl.axaml" />
+      <AdditionalFiles Include="Core\Controls\MapView\MapView.axaml" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Core\Controls\PropertyEditor\Properties\" />
+    </ItemGroup>
+</Project>

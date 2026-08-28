@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE buildprofiles SYSTEM "https://resources.jetbrains.com/writerside/1.0/build-profiles.dtd">
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <variables></variables>
+    <build-profile instance="am">
+        <variables>
+            <primary-color>blue</primary-color>
+            <link-color>blue</link-color>
+            <algolia-id>IUQ5975QLQ</algolia-id>
+            <algolia-index>asv.avalonia</algolia-index>
+            <algolia-api-key>1a0961eaed8cc41321e70c9c3d079e1f</algolia-api-key>
+            <algolia-show-logo>true</algolia-show-logo>
+            <noindex-content>false</noindex-content>
+            <ignore-problems>MRK056</ignore-problems>
+        </variables>
+
+        <footer>
+            <link href="https://docs.asv.me/">Official website</link>
+            <link href="https://github.com/asv-soft/asv-avalonia/issues">Issue tracker and Support</link>
+            <link href="mailto:asv@me.com">Contact us</link>
+            <link href="https://github.com/asv-soft/asv-drones">Asv.Drones</link>
+
+            <copyright>(c) 2026 Asv Soft LLC</copyright>
+        </footer>
+    </build-profile>
+
+</buildprofiles>

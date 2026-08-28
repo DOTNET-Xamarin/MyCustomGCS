@@ -1,0 +1,12 @@
+namespace Asv.Avalonia;
+
+public sealed class DistanceNauticalMileUnitItem() : UnitItemBase(1.0 / 1852.0)
+{
+    public const string Id = $"{DistanceUnit.Id}.nautical.mile";
+
+    public override string UnitItemId => Id;
+    public override string Name => RS.NauticalMile_UnitItem_Name;
+    public override string Description => RS.NauticalMile_Distance_Description;
+    public override string Symbol => "NM";
+    public override bool IsInternationalSystemUnit => false;
+}

@@ -1,0 +1,99 @@
+﻿using Asv.Common;
+using Asv.Modeling;
+using Material.Icons;
+using ObservableCollections;
+using R3;
+
+namespace Asv.Avalonia.GeoMap;
+
+public class MapViewModel : ViewModel, IMap
+{
+    public MapViewModel()
+        : this(DesignTime.Id.TypeId, NullMapService.Instance)
+    {
+        DesignTime.ThrowIfNotDesignMode();
+        var drone = new MapAnchor(DesignTime.Id.TypeId)
+        {
+            Icon = MaterialIconKind.Navigation,
+            Location = new GeoPoint(53, 53, 100),
+        };
+        Anchors.Add(drone);
+        var azimuth = 0;
+        TimeProvider
+            .System.CreateTimer(
+                _ =>
+                {
+                    drone.Azimuth = (azimuth++ * 10) % 360;
+                },
+                null,
+                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(1)
+            )
+            .DisposeItWith(Disposable);
+    }
+
+    public MapViewModel(string id, IMapService mapService)
+        : base(id)
+    {
+        Anchors = [];
+        Anchors.SetParent(this).DisposeItWith(Disposable);
+        Anchors.DisposeRemovedItems().DisposeItWith(Disposable);
+        AnchorsView = Anchors.ToNotifyCollectionChangedSlim().DisposeItWith(Disposable);
+        SelectedAnchor = new BindableReactiveProperty<IMapAnchor?>().DisposeItWith(Disposable);
+
+        MinZoom = mapService
+            .MinZoom.ObserveOnUIThreadDispatcher()
+            .ToReadOnlyBindableReactiveProperty(mapService.MinZoom.Value)
+            .DisposeItWith(Disposable);
+        MaxZoom = mapService
+            .MaxZoom.ObserveOnUIThreadDispatcher()
+            .ToReadOnlyBindableReactiveProperty(mapService.MaxZoom.Value)
+            .DisposeItWith(Disposable);
+
+        CenterMap = new BindableReactiveProperty<GeoPoint>(
+            new GeoPoint(53.0, 53.0, 0)
+        ).DisposeItWith(Disposable);
+        Zoom = new BindableReactiveProperty<int>(10).DisposeItWith(Disposable);
+
+        Rotation = new BindableReactiveProperty<double>(0.0).DisposeItWith(Disposable);
+        CurrentProvider = mapService
+            .CurrentProvider.ToReadOnlyBindableReactiveProperty<ITileProvider>()
+            .DisposeItWith(Disposable);
+
+        Interaction = new MapInteractionController().DisposeItWith(Disposable);
+    }
+
+    public IMapInteractionController Interaction { get; }
+
+    public IReadOnlyBindableReactiveProperty<ITileProvider> CurrentProvider { get; }
+
+    public NotifyCollectionChangedSynchronizedViewList<IMapAnchor> AnchorsView { get; }
+
+    public ObservableList<IMapAnchor> Anchors { get; }
+
+    public BindableReactiveProperty<double> Rotation { get; }
+    public BindableReactiveProperty<IMapAnchor?> SelectedAnchor { get; }
+    public BindableReactiveProperty<GeoPoint> CenterMap { get; }
+    public BindableReactiveProperty<int> Zoom { get; }
+
+    public IReadOnlyBindableReactiveProperty<int> MinZoom { get; }
+    public IReadOnlyBindableReactiveProperty<int> MaxZoom { get; }
+
+    public override IEnumerable<IViewModel> GetChildren()
+    {
+        foreach (var item in AnchorsView)
+        {
+            yield return item;
+        }
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            AnchorsView.Dispose();
+        }
+
+        base.Dispose(disposing);
+    }
+}

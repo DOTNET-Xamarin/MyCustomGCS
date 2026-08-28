@@ -1,0 +1,106 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(TargetFrameworkValue)</TargetFramework>
+        
+        <FileVersion>$(ProductVersion)</FileVersion>
+        <Version>$(ProductVersion)</Version>
+        <PackageVersion>$(ProductVersion)</PackageVersion>
+        
+        <LangVersion>preview</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <CodeAnalysisRuleSet>../CodeStyle.ruleset</CodeAnalysisRuleSet>
+        <WarningsAsErrors>
+            CS0169,
+            CS0618,
+            CS1502,
+            CS1503,
+            CS8524,
+            CS8600,
+            CS8601,
+            CS8602,
+            CS8603,
+            CS8604,
+            CS8625,
+            CS8629,
+            CS8762,
+            CA1510,
+            CA1851
+        </WarningsAsErrors>
+    </PropertyGroup>
+    <PropertyGroup>
+        <AsvDronesDesktopOutputPath>$(MSBuildThisFileDirectory)..\..\..\asv-drones\src\Asv.Drones.Desktop\bin\$(Configuration)\$(TargetFramework)\</AsvDronesDesktopOutputPath>
+        <AsvDronesPluginOutputPath>$(AsvDronesDesktopOutputPath)plugins\Asv.Drones.Plugin.Gbs\</AsvDronesPluginOutputPath>
+        <AsvDronesPluginRuntimeOutputPath>$(AsvDronesPluginOutputPath)$(TargetFramework)\</AsvDronesPluginRuntimeOutputPath>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(UseLocalAsvDrones)' == 'true'">
+        <ProjectReference Include="..\..\..\asv-drones\src\Asv.Drones.Api\Asv.Drones.Api.csproj" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(UseLocalAsvDrones)' != 'true'">
+        <PackageReference Include="Asv.Drones.Api" Version="$(AsvDronesApiVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Asv.Drones.Gbs.Contracts\Asv.Drones.Gbs.Contracts.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Shell\Pages\Devices\Gbs\GbsDevicePageView.axaml.cs">
+        <DependentUpon>GbsDevicePageView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Shell\Pages\Settings\Subpages\SavedCoordinates\Dialogs\AddCoords\AddCoordsRecordDialogView.axaml.cs">
+        <DependentUpon>AddCoordsRecordDialogView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="RS.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RS.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Shell\Pages\FlightMode\Widgets\Sections\SatelliteCount\GbsSatelliteCountSectionView.axaml.cs">
+        <DependentUpon>GbsSatelliteCountSectionView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Roslynator.Analyzers" Version="$(RoslynAnalyzersVersion)">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="StyleCop.Analyzers" Version="$(StylecopAnalyzersVersion)">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="RS.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RS.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <AdditionalFiles Include="Shell\Pages\FlightMode\Actions\Dialogs\AutoModeDialogView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\FlightMode\Actions\Dialogs\FixedModeDialogView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\FlightMode\Actions\Dialogs\SetCoordsNameDialogView.axaml" />
+      <AdditionalFiles Include="Shell\Pages\Settings\Subpages\Gbs\SavedCoordinates\Dialogs\AddCoords\AddCoordsRecordDialogView.axaml" />
+    </ItemGroup>
+
+    <Target Name="CopyPluginToAsvDrones" AfterTargets="GenerateNuspec" Condition="Exists('$(AsvDronesDesktopOutputPath)')">
+      <PropertyGroup>
+        <PluginPackagePath>$(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg</PluginPackagePath>
+      </PropertyGroup>
+      <ItemGroup>
+        <PluginOutput Include="$(TargetDir)**\*" />
+      </ItemGroup>
+      <RemoveDir Directories="$(AsvDronesPluginOutputPath)" />
+      <MakeDir Directories="$(AsvDronesPluginRuntimeOutputPath)" />
+      <Copy
+        SourceFiles="@(PluginOutput)"
+        DestinationFiles="@(PluginOutput->'$(AsvDronesPluginRuntimeOutputPath)%(RecursiveDir)%(Filename)%(Extension)')"
+        SkipUnchangedFiles="true" />
+      <Copy SourceFiles="$(PluginPackagePath)" DestinationFolder="$(AsvDronesPluginOutputPath)" />
+    </Target>
+</Project>

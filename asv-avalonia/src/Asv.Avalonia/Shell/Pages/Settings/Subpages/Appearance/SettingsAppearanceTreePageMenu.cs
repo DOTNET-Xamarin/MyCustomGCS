@@ -1,0 +1,17 @@
+using Asv.Modeling;
+using Material.Icons;
+using Microsoft.Extensions.Logging;
+
+namespace Asv.Avalonia;
+
+public class AppearanceSettingTreePageMenu : TreePageMenuItem
+{
+    public AppearanceSettingTreePageMenu(ILoggerFactory loggerFactory)
+        : base(
+            SettingsAppearanceViewModel.PageId,
+            RS.SettingsAppearanceViewModel_Name,
+            MaterialIconKind.ThemeLightDark,
+            new NavId(SettingsAppearanceViewModel.PageId),
+            NavId.Empty
+        ) { }
+}

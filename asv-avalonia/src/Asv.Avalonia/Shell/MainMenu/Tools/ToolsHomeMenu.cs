@@ -1,0 +1,22 @@
+using Asv.Common;
+using Asv.Modeling;
+using Material.Icons;
+using Microsoft.Extensions.Options;
+using R3;
+
+namespace Asv.Avalonia;
+
+public class ToolsHomeMenu : MenuItem
+{
+    public const string MenuId = $"{ToolsMenu.MenuId}-home";
+
+    public ToolsHomeMenu(IHotKeyService hotKeys, IOptions<HomePageOptions> options)
+        : base(MenuId, RS.ToolsMenu_Home, ToolsMenu.MenuId)
+    {
+        Icon = MaterialIconKind.Home;
+        BindHotKey(hotKeys, OpenHomePageAction.Id);
+        Command = new ReactiveCommand(_ =>
+            this.GoTo(new NavPath(new NavId(options.Value.PageId)))
+        ).DisposeItWith(Disposable);
+    }
+}

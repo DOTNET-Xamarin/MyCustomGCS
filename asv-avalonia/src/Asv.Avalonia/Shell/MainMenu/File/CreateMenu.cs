@@ -1,0 +1,17 @@
+using Material.Icons;
+using Microsoft.Extensions.Logging;
+
+namespace Asv.Avalonia;
+
+public class CreateMenu : MenuItem
+{
+    public const string MenuId = "main-menu-create";
+
+    public CreateMenu(ILoggerFactory loggerFactory)
+        : base(MenuId, RS.CreateMenu_Header)
+    {
+        Order = -90;
+        Icon = MaterialIconKind.FilePlus;
+        Header = RS.CreateMenu_Header;
+    }
+}

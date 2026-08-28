@@ -1,0 +1,140 @@
+using Asv.Common;
+using Asv.Modeling;
+using Microsoft.Extensions.Logging;
+using R3;
+
+namespace Asv.Avalonia;
+
+public class GeoPointPropertyOptions
+{
+    public string? LatitudeFormat { get; set; }
+    public string? LongitudeFormat { get; set; }
+    public string? AltitudeFormat { get; set; }
+}
+
+public class BindableGeoPointProperty : CompositeBindablePropertyBase<GeoPoint>
+{
+    protected readonly GeoPointPropertyOptions Options;
+    protected readonly ReactiveProperty<double> ModelLat;
+    protected readonly ReactiveProperty<double> ModelAlt;
+    protected readonly ReactiveProperty<double> ModelLon;
+
+    public BindableGeoPointProperty(
+        string typeId,
+        ReactiveProperty<GeoPoint> modelValue,
+        IUnitService unitService,
+        ILoggerFactory loggerFactory,
+        Action<GeoPointPropertyOptions>? configureOptions = null
+    )
+        : base(typeId)
+    {
+        Options = new GeoPointPropertyOptions();
+        configureOptions?.Invoke(Options);
+
+        var latUnit = unitService.GetRequiredUnitOfType<LatitudeUnit>(LatitudeUnit.Id);
+        var lonUnit = unitService.GetRequiredUnitOfType<LongitudeUnit>(LongitudeUnit.Id);
+        var altUnit = unitService.GetRequiredUnitOfType<AltitudeUnit>(AltitudeUnit.Id);
+
+        ModelValue = modelValue;
+
+        ModelLat = new ReactiveProperty<double>(modelValue.CurrentValue.Latitude).DisposeItWith(
+            Disposable
+        );
+
+        ModelLat
+            .Subscribe(x =>
+            {
+                ModelValue.Value = new GeoPoint(
+                    x,
+                    ModelValue.Value.Longitude,
+                    ModelValue.Value.Altitude
+                );
+            })
+            .DisposeItWith(Disposable);
+
+        ModelLon = new ReactiveProperty<double>(modelValue.CurrentValue.Longitude).DisposeItWith(
+            Disposable
+        );
+        ModelLon
+            .Subscribe(x =>
+            {
+                ModelValue.Value = new GeoPoint(
+                    ModelValue.Value.Latitude,
+                    x,
+                    ModelValue.Value.Altitude
+                );
+            })
+            .DisposeItWith(Disposable);
+
+        ModelAlt = new ReactiveProperty<double>(modelValue.CurrentValue.Altitude).DisposeItWith(
+            Disposable
+        );
+        ModelAlt
+            .Subscribe(x =>
+            {
+                ModelValue.Value = new GeoPoint(
+                    ModelValue.Value.Latitude,
+                    ModelValue.Value.Longitude,
+                    x
+                );
+            })
+            .DisposeItWith(Disposable);
+
+        Latitude = new BindableUnitProperty<LatitudeUnit>(
+            nameof(Latitude),
+            ModelLat,
+            latUnit,
+            loggerFactory,
+            Options.LatitudeFormat
+        )
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+        Longitude = new BindableUnitProperty<LongitudeUnit>(
+            nameof(Longitude),
+            ModelLon,
+            lonUnit,
+            loggerFactory,
+            Options.LongitudeFormat
+        )
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+        Altitude = new BindableUnitProperty<AltitudeUnit>(
+            nameof(Altitude),
+            ModelAlt,
+            altUnit,
+            loggerFactory,
+            Options.AltitudeFormat
+        )
+            .SetRoutableParent(this)
+            .DisposeItWith(Disposable);
+
+        ModelValue
+            .Subscribe(x =>
+            {
+                ModelLat.Value = x.Latitude;
+                ModelLon.Value = x.Longitude;
+                ModelAlt.Value = x.Altitude;
+            })
+            .DisposeItWith(Disposable);
+    }
+
+    public BindableUnitProperty<LatitudeUnit> Latitude { get; }
+    public BindableUnitProperty<LongitudeUnit> Longitude { get; }
+    public BindableUnitProperty<AltitudeUnit> Altitude { get; }
+
+    public override void ForceValidate()
+    {
+        Latitude.ForceValidate();
+        Longitude.ForceValidate();
+        Altitude.ForceValidate();
+    }
+
+    public override IEnumerable<IViewModel> GetChildren()
+    {
+        yield return Latitude;
+        yield return Longitude;
+        yield return Altitude;
+    }
+
+    public sealed override ReactiveProperty<GeoPoint> ModelValue { get; }
+}

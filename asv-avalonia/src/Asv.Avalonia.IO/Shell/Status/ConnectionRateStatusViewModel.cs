@@ -1,0 +1,157 @@
+﻿using System.Buffers;
+using System.Diagnostics.CodeAnalysis;
+using System.Text;
+using Asv.Common;
+using Asv.IO;
+using Asv.Modeling;
+using DotNext.Buffers;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using R3;
+
+namespace Asv.Avalonia.IO;
+
+public class ConnectionRateStatusViewModel : StatusItem
+{
+    public const string TypeId = "status_connection_rate";
+
+    private readonly ILoggerFactory _loggerFactory;
+    private readonly TimeProvider _timeProvider;
+    private readonly IUnit _frequencyUnit;
+
+    private readonly IncrementalRateCounter _rxBytes;
+    private readonly IncrementalRateCounter _txBytes;
+    private readonly IncrementalRateCounter _rxPackets;
+    private readonly IncrementalRateCounter _txPackets;
+    private readonly IDataFormatter _dataSizeFormatter;
+    private readonly IDataFormatter _byteRateFormatter;
+
+    public ConnectionRateStatusViewModel()
+        : this(DesignTime.UnitService, NullLoggerFactory.Instance, TimeProvider.System)
+    {
+        DesignTime.ThrowIfNotDesignMode();
+        var stat = new Statistic();
+
+        Observable
+            .Timer(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1))
+            .Subscribe(_ =>
+            {
+                stat.AddParserBytes(Random.Shared.Next(0, 1_000_000));
+                stat.AddRxBytes(Random.Shared.Next(0, 1_000_000));
+                stat.AddTxBytes(Random.Shared.Next(0, 1_000_000));
+                for (int i = 0; i < Random.Shared.Next(0, 100); i++)
+                {
+                    stat.IncrementRxMessage();
+                }
+                for (int i = 0; i < Random.Shared.Next(0, 100); i++)
+                {
+                    stat.IncrementTxMessage();
+                }
+                UpdateStatistic(stat);
+            });
+    }
+
+    public ConnectionRateStatusViewModel(
+        IDeviceManager deviceManager,
+        IUnitService unitService,
+        ILoggerFactory loggerFactory,
+        TimeProvider timeProvider
+    )
+        : this(unitService, loggerFactory, timeProvider)
+    {
+        Observable
+            .Timer(TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1))
+            .Subscribe(_ => UpdateStatistic(deviceManager.Router.Statistic))
+            .DisposeItWith(Disposable);
+        this.ObservePropertyChanged(x => x.IsFlyoutOpen)
+            .Subscribe(_ => UpdateStatistic(deviceManager.Router.Statistic))
+            .DisposeItWith(Disposable);
+    }
+
+    private ConnectionRateStatusViewModel(
+        IUnitService unitService,
+        ILoggerFactory loggerFactory,
+        TimeProvider timeProvider
+    )
+        : base(TypeId, default)
+    {
+        _loggerFactory = loggerFactory;
+        _timeProvider = timeProvider;
+        _frequencyUnit =
+            unitService.Units[FrequencyUnit.Id]
+            ?? throw new UnitException($"Unit {FrequencyUnit.Id} was not found");
+        _dataSizeFormatter = unitService.CreateDataSizeFormatter();
+        _byteRateFormatter = unitService.CreateByteRateFormatter();
+        _rxBytes = new IncrementalRateCounter(5, timeProvider);
+        _txBytes = new IncrementalRateCounter(5, timeProvider);
+        _rxPackets = new IncrementalRateCounter(5, timeProvider);
+        _txPackets = new IncrementalRateCounter(5, timeProvider);
+    }
+
+    [field: AllowNull]
+    [field: MaybeNull]
+    public StatisticViewModel FullStatistic
+    {
+        get
+        {
+            return field ??= new StatisticViewModel(
+                $"{TypeId}-statistic",
+                _timeProvider,
+                _dataSizeFormatter,
+                _byteRateFormatter
+            );
+        }
+    }
+
+    public override int Order => 256;
+
+    public string TotalRateInString
+    {
+        get;
+        set => SetField(ref field, value);
+    } = string.Empty;
+
+    public string TotalRateOutString
+    {
+        get;
+        set => SetField(ref field, value);
+    } = string.Empty;
+
+    public bool IsFlyoutOpen
+    {
+        get;
+        set => SetField(ref field, value);
+    }
+
+    public override IEnumerable<IViewModel> GetChildren()
+    {
+        return [];
+    }
+
+    public void NavigateToSettings()
+    {
+        this.GoTo(
+                new NavPath(
+                    new NavId(SettingsPageViewModel.PageId),
+                    new NavId(SettingsConnectionViewModel.SubPageId)
+                )
+            )
+            .SafeFireAndForget();
+    }
+
+    private void UpdateStatistic(IStatistic stat)
+    {
+        var rxBytes = _byteRateFormatter.Print(_rxBytes.Calculate(stat.RxBytes));
+        var txBytes = _byteRateFormatter.Print(_txBytes.Calculate(stat.TxBytes));
+        var rxPackets = _rxPackets.Calculate(stat.RxMessages).ToString("F1");
+        var txPackets = _txPackets.Calculate(stat.TxMessages).ToString("F1");
+        var gzUnitSymbol = _frequencyUnit.AvailableUnits[FrequencyHertzUnitItem.Id].Symbol;
+        TotalRateInString = $"{rxBytes} / {rxPackets} {gzUnitSymbol}";
+        TotalRateOutString = $"{txBytes} / {txPackets} {gzUnitSymbol}";
+
+        if (IsFlyoutOpen)
+        {
+            FullStatistic.Update(stat);
+        }
+    }
+}

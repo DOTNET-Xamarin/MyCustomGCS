@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="am"
+                 name="Asv.Avalonia.Docs"
+                 start-page="welcome-page.md">
+    
+    <toc-element topic="welcome-page.md"/>
+    <toc-element topic="what-is-asv-avalonia.md"/>
+    <toc-element topic="supported-platforms.md"/>
+    <toc-element toc-title="Get Started">
+        <toc-element topic="project-setup.md"/>
+        <toc-element toc-title="Test Drive">
+            <toc-element topic="pages.md"/>
+            <toc-element topic="customizing-page.md"/>
+        </toc-element>
+    </toc-element>
+    <toc-element topic="project-structure.md"/>
+    <toc-element topic="dependency-injection.md"/>
+    <toc-element topic="samples-and-tutorial.md">
+        <toc-element topic="recipe-book-app.md" >
+            <toc-element topic="recipe-book-app-dialogs-and-notifications.md" />
+            <toc-element topic="recipe-book-app-recipe-persistence.md" />
+            <toc-element topic="recipe-book-app-layout-persistence.md" />
+            <toc-element topic="recipe-book-app-search.md" />
+            <toc-element topic="recipe-book-app-source-code.md" />
+        </toc-element>
+        <toc-element topic="how-to-create-module.md">
+            <toc-element topic="how-to-create-module-make-module-really-modular.md"/>
+            <toc-element topic="how-to-create-module-make-nuget.md"/>
+            <toc-element topic="how-to-create-module-source-code.md"/>
+        </toc-element>
+    </toc-element>
+    <toc-element toc-title="Basic components">
+        <toc-element topic="view-locator.md"/>
+        <toc-element toc-title="Controls">
+            <toc-element topic="search-box.md"/>
+            <toc-element topic="splash-screens.md"/>
+            <toc-element topic="tags.md"/>
+        </toc-element>
+        <toc-element toc-title="View Models">
+            <toc-element topic="view-model.md"/>
+            <toc-element topic="extendable-view-model.md"/>
+            <toc-element topic="page-view-model.md"/>
+            <toc-element toc-title="Tree Page">
+                <toc-element topic="tree-page-view-model.md"/>
+                <toc-element topic="tree-subpage.md"/>
+                <toc-element topic="extendable-tree-subpage.md"/>
+            </toc-element>
+            <toc-element topic="headlined-view-model.md"/>
+            <toc-element topic="extendable-headlined-view-model.md"/>
+            <toc-element topic="action-view-model.md"/>
+        </toc-element>
+        <toc-element topic="layout-persistence.md"/>
+        <toc-element topic="undo-redo.md"/>
+    </toc-element>
+    <toc-element toc-title="Services">
+        <toc-element topic="what-is-a-service.md"/>
+        <toc-element topic="localization-service.md"/>
+        <toc-element topic="theme-service.md"/>
+        <toc-element topic="extension-service.md"/>
+        <toc-element topic="hot-key-service.md"/>
+        <toc-element topic="file-association-service.md"/>
+        <toc-element topic="unit-service.md"/>
+        <toc-element topic="log-reader-service.md"/>
+    </toc-element>
+    <toc-element toc-title="Modules">
+        <toc-element topic="what-is-a-module.md"/>
+        <toc-element topic="geomap-module.md"/>
+    </toc-element>
+    <toc-element toc-title="About">
+        <toc-element topic="licensing-information.md"/>
+        <toc-element topic="contact-information-for-feedback.md"/>
+    </toc-element>
+    <toc-element topic="for-developers.md"/>
+</instance-profile>

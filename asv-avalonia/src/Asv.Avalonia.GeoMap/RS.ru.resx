@@ -1,0 +1,344 @@
+﻿<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="GeoPointDialogViewModel_Step" xml:space="preserve">
+        <value>Шаг</value>
+    </data>
+    <data name="GeoPointDialogPrefab_Content_Title" xml:space="preserve">
+        <value>Установить координаты</value>
+    </data>
+    <data name="GeoPointDialogViewModel_Anchor_Title" xml:space="preserve">
+        <value>Точка</value>
+    </data>
+    <data name="ChangeMaxZoomCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда изменяет максимальный зум</value>
+    </data>
+    <data name="ChangeMaxZoomCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Изменить максимальный зум</value>
+    </data>
+    <data name="ChangeMinZoomCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда изменяет минимальный зум</value>
+    </data>
+    <data name="ChangeMinZoomCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Изменить минимальный зум</value>
+    </data>
+    <data name="MapModeProperty_MapModeInfo_Mixed" xml:space="preserve">
+        <value>Смешанный</value>
+    </data>
+    <data name="MapModeProperty_MapModeInfo_Mixed_Description" xml:space="preserve">
+        <value>Сначала использует кешированные тайлы и загружает недостающие из сети.</value>
+    </data>
+    <data name="MapModeProperty_MapModeInfo_Offline" xml:space="preserve">
+        <value>Оффлайн</value>
+    </data>
+    <data name="MapModeProperty_MapModeInfo_Offline_Description" xml:space="preserve">
+        <value>Использует только локально кешированные тайлы карты.</value>
+    </data>
+    <data name="MapModeProperty_MapModeInfo_Online" xml:space="preserve">
+        <value>Онлайн</value>
+    </data>
+    <data name="MapModeProperty_MapModeInfo_Online_Description" xml:space="preserve">
+        <value>Загружает тайлы карты от выбранного онлайн-провайдера.</value>
+    </data>
+    <data name="SettingsGeoMapView_ModeProperty_Title" xml:space="preserve">
+        <value>Режим работы карты</value>
+    </data>
+    <data name="SettingsGeoMapView_ModeProperty_Description" xml:space="preserve">
+        <value>Определяет, откуда загружаются тайлы: из сети, локального кеша или обоих источников.</value>
+    </data>
+    <data name="SettingsGeoMapView_TileProviderProperty_Title" xml:space="preserve">
+        <value>Провайдер карты</value>
+    </data>
+    <data name="SettingsGeoMapView_TileProviderProperty_Description" xml:space="preserve">
+        <value>Выбирает источник тайлов для отображения карты.</value>
+    </data>
+    <data name="SettingsGeoMapView_MapPreview_Title" xml:space="preserve">
+        <value>Предпросмотр карты</value>
+    </data>
+    <data name="SettingsGeoMapView_MapPreview_Description" xml:space="preserve">
+        <value>Показывает, как карта выглядит с текущим провайдером и настройками масштаба.</value>
+    </data>
+    <data name="SettingsGeoMapView_MapPreview_Anchor" xml:space="preserve">
+        <value>Точка предпросмотра</value>
+    </data>
+    <data name="SettingsGeoMapViewModel_Name" xml:space="preserve">
+        <value>Карта</value>
+    </data>
+    <data name="MapStatusView_Details_Title" xml:space="preserve">
+        <value>Загрузка карты</value>
+    </data>
+    <data name="MapStatusView_NavigationButton_Settings" xml:space="preserve">
+        <value>Настройки карты</value>
+    </data>
+    <data name="MapStatusView_Section_Loader" xml:space="preserve">
+        <value>Загрузчик</value>
+    </data>
+    <data name="MapStatusView_Section_MemoryCache" xml:space="preserve">
+        <value>Кэш в памяти</value>
+    </data>
+    <data name="MapStatusView_Section_FileCache" xml:space="preserve">
+        <value>Папка карты</value>
+    </data>
+    <data name="MapStatusView_Row_NetworkRate" xml:space="preserve">
+        <value>Скорость из сети</value>
+    </data>
+    <data name="MapStatusView_Row_Queue" xml:space="preserve">
+        <value>Очередь</value>
+    </data>
+    <data name="MapStatusView_Row_ActiveRequests" xml:space="preserve">
+        <value>Активные запросы</value>
+    </data>
+    <data name="MapStatusView_Row_MapMode" xml:space="preserve">
+        <value>Режим</value>
+    </data>
+    <data name="MapStatusView_Row_ParallelDownloads" xml:space="preserve">
+        <value>Параллельные загрузки</value>
+    </data>
+    <data name="MapStatusView_Row_TotalRequests" xml:space="preserve">
+        <value>Запросы тайлов</value>
+    </data>
+    <data name="MapStatusView_Row_QueuedRequestsTotal" xml:space="preserve">
+        <value>Поставлено в очередь</value>
+    </data>
+    <data name="MapStatusView_Row_NetworkRequests" xml:space="preserve">
+        <value>Запросы в сеть</value>
+    </data>
+    <data name="MapStatusView_Row_DownloadedTiles" xml:space="preserve">
+        <value>Скачанные тайлы</value>
+    </data>
+    <data name="MapStatusView_Row_DownloadedSize" xml:space="preserve">
+        <value>Скачанный размер</value>
+    </data>
+    <data name="MapStatusView_Row_FailedDownloads" xml:space="preserve">
+        <value>Ошибки загрузки</value>
+    </data>
+    <data name="MapStatusView_Row_MemoryCacheSize" xml:space="preserve">
+        <value>Размер кэша</value>
+    </data>
+    <data name="MapStatusView_Row_CacheTiles" xml:space="preserve">
+        <value>Тайлы</value>
+    </data>
+    <data name="MapStatusView_Row_CacheHits" xml:space="preserve">
+        <value>Попадания</value>
+    </data>
+    <data name="MapStatusView_Row_CacheMisses" xml:space="preserve">
+        <value>Промахи</value>
+    </data>
+    <data name="MapStatusView_Row_FolderSize" xml:space="preserve">
+        <value>Размер папки</value>
+    </data>
+    <data name="MapStatusView_Row_FileCacheCapacity" xml:space="preserve">
+        <value>Лимит папки</value>
+    </data>
+    <data name="ChangeTileProviderCommand_CommandInfo_Name" xml:space="preserve">
+        <value>Изменить провайдера карты</value>
+    </data>
+    <data name="ChangeTileProviderCommand_CommandInfo_Description" xml:space="preserve">
+        <value>Команда, изменяющая провайдера карты</value>
+    </data>
+    <data name="SettingsGeoMapView_ZoomSection_Title" xml:space="preserve">
+        <value>Зум</value>
+    </data>
+    <data name="SettingsGeoMapView_CommonSection_Title" xml:space="preserve">
+        <value>Общие</value>
+    </data>
+    <data name="SettingsGeoMapView_MaxZoomProperty_Title" xml:space="preserve">
+        <value>Максимальный масштаб</value>
+    </data>
+    <data name="SettingsGeoMapView_MaxZoomProperty_Description" xml:space="preserve">
+        <value>Максимальный уровень масштаба, доступный на карте.</value>
+    </data>
+    <data name="SettingsGeoMapView_MinZoomProperty_Title" xml:space="preserve">
+        <value>Минимальный масштаб</value>
+    </data>
+    <data name="SettingsGeoMapView_MinZoomProperty_Description" xml:space="preserve">
+        <value>Минимальный уровень масштаба, доступный на карте.</value>
+    </data>
+    <data name="MapZoomProperty_ZoomLevel_Description" xml:space="preserve">
+        <value>Уровень масштаба {0}.</value>
+    </data>
+    <data name="TileProviderViewModel_Description" xml:space="preserve">
+        <value>Провайдер группы «{0}». Уровни масштаба: {1}-{2}.</value>
+    </data>
+    <data name="EditApiKeyDialogView_ApiKeyProperty_Title" xml:space="preserve">
+        <value>API ключ провайдера карты</value>
+    </data>
+    <data name="TileProviderGroup_Bing_Name" xml:space="preserve">
+        <value>Бинг</value>
+    </data>
+    <data name="TileProviderGroup_Other_Name" xml:space="preserve">
+        <value>Другое</value>
+    </data>
+    <data name="TileProviderGroup_Yandex_Name" xml:space="preserve">
+        <value>Яндекс</value>
+    </data>
+    <data name="BingHybridTileProvider_Info_Name" xml:space="preserve">
+        <value>Гибрид</value>
+    </data>
+    <data name="BingRoadTileProvider_Info_Name" xml:space="preserve">
+        <value>Карта</value>
+    </data>
+    <data name="BingSatelliteTileProvider_Info_Name" xml:space="preserve">
+        <value>Спутник</value>
+    </data>
+    <data name="EmptyTileProvider_Info_Name" xml:space="preserve">
+        <value>Пустой</value>
+    </data>
+    <data name="TileProviderGroup_OpenStreetMap_Name" xml:space="preserve">
+        <value>OpenStreetMap</value>
+    </data>
+    <data name="OpenStreetMapTileProvider_Info_Name" xml:space="preserve">
+        <value>Стандартный</value>
+    </data>
+    <data name="TileProviderGroup_Google_Name" xml:space="preserve">
+        <value>Google</value>
+    </data>
+    <data name="GoogleMapTileProvider_Info_Name" xml:space="preserve">
+        <value>Карта</value>
+    </data>
+    <data name="GoogleSatelliteTileProvider_Info_Name" xml:space="preserve">
+        <value>Спутник</value>
+    </data>
+    <data name="GoogleHybridTileProvider_Info_Name" xml:space="preserve">
+        <value>Гибрид</value>
+    </data>
+    <data name="GoogleTerrainTileProvider_Info_Name" xml:space="preserve">
+        <value>Рельеф</value>
+    </data>
+    <data name="CyclOsmTileProvider_Info_Name" xml:space="preserve">
+        <value>Велосипедная</value>
+    </data>
+    <data name="HotOsmTileProvider_Info_Name" xml:space="preserve">
+        <value>Гуманитарная</value>
+    </data>
+    <data name="UmpTileProvider_Info_Name" xml:space="preserve">
+        <value>UMP Польша</value>
+    </data>
+    <data name="ThunderforestLandscapeTileProvider_Info_Name" xml:space="preserve">
+        <value>Ландшафт</value>
+    </data>
+    <data name="ThunderforestCycleTileProvider_Info_Name" xml:space="preserve">
+        <value>Велосипедная</value>
+    </data>
+    <data name="ThunderforestTransportTileProvider_Info_Name" xml:space="preserve">
+        <value>Транспорт</value>
+    </data>
+    <data name="ThunderforestOutdoorsTileProvider_Info_Name" xml:space="preserve">
+        <value>Активный отдых</value>
+    </data>
+    <data name="ThunderforestTransportDarkTileProvider_Info_Name" xml:space="preserve">
+        <value>Транспорт (тёмная)</value>
+    </data>
+    <data name="ThunderforestAtlasTileProvider_Info_Name" xml:space="preserve">
+        <value>Атлас</value>
+    </data>
+    <data name="TileProviderGroup_ArcGis_Name" xml:space="preserve">
+        <value>ArcGIS</value>
+    </data>
+    <data name="ArcGisWorldStreetTileProvider_Info_Name" xml:space="preserve">
+        <value>Улицы</value>
+    </data>
+    <data name="ArcGisWorldTopoTileProvider_Info_Name" xml:space="preserve">
+        <value>Топография</value>
+    </data>
+    <data name="ArcGisWorldTerrainTileProvider_Info_Name" xml:space="preserve">
+        <value>Местность</value>
+    </data>
+    <data name="ArcGisWorldShadedReliefTileProvider_Info_Name" xml:space="preserve">
+        <value>Теневой рельеф</value>
+    </data>
+    <data name="ArcGisWorldPhysicalTileProvider_Info_Name" xml:space="preserve">
+        <value>Физическая</value>
+    </data>
+    <data name="TileProviderGroup_Here_Name" xml:space="preserve">
+        <value>HERE</value>
+    </data>
+    <data name="TileProviderGroup_Thunderforest_Name" xml:space="preserve">
+        <value>Thunderforest</value>
+    </data>
+    <data name="HereMapTileProvider_Info_Name" xml:space="preserve">
+        <value>Карта</value>
+    </data>
+    <data name="HereSatelliteTileProvider_Info_Name" xml:space="preserve">
+        <value>Спутник</value>
+    </data>
+    <data name="HereHybridTileProvider_Info_Name" xml:space="preserve">
+        <value>Гибрид</value>
+    </data>
+    <data name="HereTerrainTileProvider_Info_Name" xml:space="preserve">
+        <value>Рельеф</value>
+    </data>
+    <data name="WikiMapiaTileProvider_Info_Name" xml:space="preserve">
+        <value>WikiMapia</value>
+    </data>
+    <data name="YandexTileProvider_Info_Name" xml:space="preserve">
+        <value>Стандартный</value>
+    </data>
+    <data name="YandexSatelliteTileProvider_Info_Name" xml:space="preserve">
+        <value>Спутник</value>
+    </data>
+    <data name="EditApiKeyDialogPrefab_Content_Title" xml:space="preserve">
+        <value>Редактировать API ключ</value>
+    </data>
+    <data name="EditApiKeyDialogPrefab_Content_PrimaryButton" xml:space="preserve">
+        <value>Сохранить</value>
+    </data>
+    <data name="SettingsGeoMapView_SetCurrentProvider_Tooltip" xml:space="preserve">
+        <value>Установить текущим</value>
+    </data>
+    <data name="SettingsGeoMapView_EditProviderApiKey_Tooltip" xml:space="preserve">
+        <value>Редактировать API ключ</value>
+    </data>
+    <data name="ArcGisWorldImageryTileProvider_Info_Name" xml:space="preserve">
+        <value>Образная</value>
+    </data>
+    <data name="MapRuler_Tooltip" xml:space="preserve">
+        <value>Линейка</value>
+    </data>
+    <data name="MapRuler_PickStart" xml:space="preserve">
+        <value>Выберите начальную точку линейки</value>
+    </data>
+    <data name="MapRuler_PickEnd" xml:space="preserve">
+        <value>Выберите конечную точку линейки</value>
+    </data>
+    <data name="MapZoomControl_ZoomIn" xml:space="preserve">
+        <value>Увеличить масштаб</value>
+    </data>
+    <data name="MapZoomControl_ZoomOut" xml:space="preserve">
+        <value>Уменьшить масштаб</value>
+    </data>
+    <data name="HttpTileProvider_Error_Unauthorized_Title" xml:space="preserve">
+        <value>Ошибка авторизации</value>
+    </data>
+    <data name="HttpTileProvider_Error_Unauthorized_Message" xml:space="preserve">
+        <value>Некорректный или отсутствующий API ключ для провайдера карты «{0}». Укажите корректный API ключ в настройках.</value>
+    </data>
+    <data name="HttpTileProvider_Error_ServerError_Title" xml:space="preserve">
+        <value>Ошибка сервера</value>
+    </data>
+    <data name="HttpTileProvider_Error_ServerError_Message" xml:space="preserve">
+        <value>Провайдер карты «{0}» временно недоступен. Повторная попытка выполняется автоматически.</value>
+    </data>
+    <data name="HttpTileProvider_Error_Timeout_Title" xml:space="preserve">
+        <value>Таймаут подключения</value>
+    </data>
+    <data name="HttpTileProvider_Error_Timeout_Message" xml:space="preserve">
+        <value>Провайдер карты «{0}» не отвечает. Повторная попытка выполняется автоматически.</value>
+    </data>
+    <data name="HttpTileProvider_Error_NetworkError_Title" xml:space="preserve">
+        <value>Ошибка сети</value>
+    </data>
+    <data name="HttpTileProvider_Error_NetworkError_Message" xml:space="preserve">
+        <value>Не удалось подключиться к провайдеру карты «{0}». Проверьте подключение к интернету.</value>
+    </data>
+</root>

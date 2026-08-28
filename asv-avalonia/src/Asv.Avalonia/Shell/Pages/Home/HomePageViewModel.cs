@@ -1,0 +1,163 @@
+﻿using Asv.Cfg;
+using Asv.Common;
+using Asv.IO;
+using Asv.Modeling;
+using Material.Icons;
+using Microsoft.Extensions.Logging;
+using ObservableCollections;
+
+namespace Asv.Avalonia;
+
+public class HomePageViewModel : PageViewModel<IHomePage>, IHomePage
+{
+    public const string PageId = "home";
+    public const MaterialIconKind PageIcon = MaterialIconKind.Home;
+    public const AsvColorKind PageIconColor = AsvColorKind.None;
+
+    public HomePageViewModel()
+        : this(
+            DesignTime.PageContext,
+            DesignTime.AppInfo,
+            DesignTime.LoggerFactory,
+            DesignTime.DialogService,
+            DesignTime.ExtensionService
+        )
+    {
+        DesignTime.ThrowIfNotDesignMode();
+        var items = Enum.GetValues<MaterialIconKind>();
+        for (int i = 0; i < 5; i++)
+        {
+            Tools.Add(
+                new ActionViewModel($"cmd{i}")
+                {
+                    Icon = (MaterialIconKind)Random.Shared.Next(1, items.Length),
+                    Header = $"Tool {i}",
+                    Description = $"Open tool page {i} with description",
+                    Order = 0,
+                    Command = null,
+                    CommandParameter = null,
+                }
+            );
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            var d = new HomePageItem(
+                $"dev{i}",
+                NavArgs.Empty,
+                DesignTime.LoggerFactory,
+                DesignTime.ExtensionService
+            )
+            {
+                Icon = MaterialIconKind.Drone,
+                Header = $"Device {i}",
+                Description = $"Device description {i}",
+                Order = 0,
+            };
+            d.Info.Add(
+                new HeadlinedViewModel("prop1")
+                {
+                    Icon = MaterialIconKind.IdCard,
+                    Header = "StaticId",
+                    Description = "Mavlink(1.1)",
+                }
+            );
+            d.Info.Add(
+                new HeadlinedViewModel("prop2")
+                {
+                    Icon = MaterialIconKind.MergeType,
+                    Header = "Type",
+                    Description = "Copter",
+                }
+            );
+            d.Info.Add(
+                new HeadlinedViewModel("prop3")
+                {
+                    Icon = MaterialIconKind.SerialPort,
+                    Header = "Port",
+                    Description = "serial 1",
+                }
+            );
+
+            for (int j = 0; j < 5; j++)
+            {
+                d.Actions.Add(
+                    new ActionViewModel($"cmd{i}")
+                    {
+                        Icon = (MaterialIconKind)Random.Shared.Next(1, items.Length),
+                        Header = $"Device tool {i}",
+                        Description = $"Open tool page {i} with description",
+                        Order = 0,
+                        Command = null,
+                        CommandParameter = null,
+                    }
+                );
+            }
+
+            Items.Add(d);
+        }
+    }
+
+    public HomePageViewModel(
+        IPageContext context,
+        IAppInfo appInfo,
+        ILoggerFactory loggerFactory,
+        IDialogService dialogService,
+        IExtensionService ext
+    )
+        : base(PageId, context, loggerFactory, dialogService, ext)
+    {
+        AppInfo = appInfo;
+        Icon = PageIcon;
+        IconColor = PageIconColor;
+        Header = RS.HomePageViewModel_Title;
+
+        Tools = [];
+        Tools.SetParent(this).DisposeItWith(Disposable);
+        Tools.DisposeRemovedItems().DisposeItWith(Disposable);
+        ToolsView = Tools.ToNotifyCollectionChangedSlim().DisposeItWith(Disposable);
+
+        Items = [];
+
+        ItemsList = Items.CreateView(x => new HomePageItemDecorator(x)).DisposeItWith(Disposable);
+
+        ItemsList.DisposeMany().DisposeItWith(Disposable);
+        ItemsList.SetParent(this).DisposeItWith(Disposable);
+
+        ItemsView = ItemsList.ToNotifyCollectionChanged().DisposeItWith(Disposable);
+    }
+
+    public IAppInfo AppInfo
+    {
+        get;
+        set => SetField(ref field, value);
+    }
+
+    public NotifyCollectionChangedSynchronizedViewList<HomePageItemDecorator> ItemsView { get; }
+
+    public ISynchronizedView<IHomePageItem, HomePageItemDecorator> ItemsList { get; }
+
+    public ObservableList<IHomePageItem> Items { get; }
+
+    public NotifyCollectionChangedSynchronizedViewList<IActionViewModel> ToolsView { get; }
+
+    public ObservableList<IActionViewModel> Tools { get; }
+
+    public override IEnumerable<IViewModel> GetChildren()
+    {
+        foreach (var model in Tools)
+        {
+            yield return model;
+        }
+
+        foreach (var model in Items)
+        {
+            yield return model;
+        }
+    }
+
+    protected override void AfterLoadExtensions()
+    {
+        // do nothing
+    }
+}

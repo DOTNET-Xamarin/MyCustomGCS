@@ -1,0 +1,18 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:gbs="clr-namespace:Asv.Drones.Plugin.Gbs"
+    xmlns:avalonia1="clr-namespace:Asv.Avalonia;assembly=Asv.Avalonia"
+    mc:Ignorable="d"
+    x:Class="Asv.Drones.Plugin.Gbs.AddCoordsRecordDialogView"
+    x:DataType="gbs:AddCoordsRecordDialogViewModel"
+>
+    <Design.DataContext>
+        <!-- Sometimes DesignTime's view breaks for no reason -->
+        <gbs:AddCoordsRecordDialogViewModel />
+    </Design.DataContext>
+
+    <avalonia1:PropertyEditorView DataContext="{Binding FieldsEditor}" />
+</UserControl>

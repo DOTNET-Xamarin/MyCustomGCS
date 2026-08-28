@@ -1,0 +1,220 @@
+<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:map="clr-namespace:Asv.Avalonia.GeoMap"
+    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+    mc:Ignorable="d"
+    d:DesignWidth="220"
+    d:DesignHeight="78"
+    x:Class="Asv.Avalonia.GeoMap.MapRuler"
+    x:DataType="map:MapRuler"
+    x:Name="PART_Root"
+>
+    <UserControl.Resources>
+        <LinearGradientBrush
+            x:Key="MapRulerSurfaceBrush"
+            StartPoint="50%,0%"
+            EndPoint="50%,100%"
+        >
+            <GradientStop Offset="0" Color="#E02D3943" />
+            <GradientStop Offset="1" Color="#E029343D" />
+        </LinearGradientBrush>
+
+        <ControlTheme x:Key="MapRulerToggleTheme" TargetType="ToggleButton">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="999" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border
+                        x:Name="PART_ButtonBackground"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                    >
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                        />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pointerover /template/ Border#PART_ButtonBackground">
+                <Setter Property="Background" Value="#20FFFFFF" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#PART_ButtonBackground">
+                <Setter Property="Background" Value="#38FFFFFF" />
+            </Style>
+            <Style Selector="^:checked /template/ Border#PART_ButtonBackground">
+                <Setter Property="Background" Value="#2CFFFFFF" />
+            </Style>
+            <Style Selector="^:checked:pointerover /template/ Border#PART_ButtonBackground">
+                <Setter Property="Background" Value="#3AFFFFFF" />
+            </Style>
+            <Style Selector="^:focus-visible /template/ Border#PART_ButtonBackground">
+                <Setter Property="BorderBrush" Value="#B3FFFFFF" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Style>
+            <Style Selector="^:disabled /template/ ContentPresenter">
+                <Setter Property="Opacity" Value="0.35" />
+            </Style>
+        </ControlTheme>
+
+        <ControlTheme x:Key="MapRulerCloseButtonTheme" TargetType="Button">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="999" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border
+                        x:Name="PART_ButtonBackground"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                    >
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                        />
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pointerover /template/ Border#PART_ButtonBackground">
+                <Setter Property="Background" Value="#20FFFFFF" />
+            </Style>
+            <Style Selector="^:pressed /template/ Border#PART_ButtonBackground">
+                <Setter Property="Background" Value="#38FFFFFF" />
+            </Style>
+            <Style Selector="^:focus-visible /template/ Border#PART_ButtonBackground">
+                <Setter Property="BorderBrush" Value="#80FFFFFF" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Style>
+        </ControlTheme>
+    </UserControl.Resources>
+
+    <UserControl.Styles>
+        <Style Selector="Border.map-ruler-surface">
+            <Setter Property="MinWidth" Value="38" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="ClipToBounds" Value="True" />
+            <Setter Property="CornerRadius" Value="999" />
+            <Setter Property="Background" Value="{StaticResource MapRulerSurfaceBrush}" />
+            <Setter Property="BorderBrush" Value="#3DF3F7FA" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BoxShadow" Value="0 2 6 0 #40000000" />
+        </Style>
+    </UserControl.Styles>
+
+    <Design.PreviewWith>
+        <Border Padding="20" Background="#435A69">
+            <Border Classes="map-ruler-surface">
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton
+                        Width="36"
+                        Height="36"
+                        IsChecked="True"
+                        Theme="{StaticResource MapRulerToggleTheme}"
+                    >
+                        <avalonia:MaterialIcon
+                            Width="18"
+                            Height="18"
+                            Kind="Ruler"
+                            Foreground="#F8FBFF"
+                        />
+                    </ToggleButton>
+                    <Grid ColumnDefinitions="Auto,32">
+                        <Border
+                            Width="1"
+                            Margin="0,9"
+                            HorizontalAlignment="Left"
+                            Background="#24FFFFFF"
+                        />
+                        <TextBlock
+                            Margin="10,0,6,0"
+                            VerticalAlignment="Center"
+                            Text="10203.3 m"
+                            Foreground="#F8FBFF"
+                            FontSize="13"
+                            FontWeight="SemiBold"
+                        />
+                        <Button
+                            Grid.Column="1"
+                            Width="28"
+                            Height="28"
+                            Theme="{StaticResource MapRulerCloseButtonTheme}"
+                        >
+                            <avalonia:MaterialIcon
+                                Width="14"
+                                Height="14"
+                                Kind="Close"
+                                Foreground="#CCF8FBFF"
+                            />
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Design.PreviewWith>
+
+    <Border Classes="map-ruler-surface">
+        <StackPanel Orientation="Horizontal">
+            <ToggleButton
+                x:Name="PART_Toggle"
+                Width="36"
+                Height="36"
+                Click="OnToggleClick"
+                ToolTip.Tip="{x:Static map:RS.MapRuler_Tooltip}"
+                Theme="{StaticResource MapRulerToggleTheme}"
+            >
+                <avalonia:MaterialIcon
+                    Width="18"
+                    Height="18"
+                    Kind="Ruler"
+                    Foreground="#F8FBFF"
+                />
+            </ToggleButton>
+
+            <Grid
+                ColumnDefinitions="Auto,32"
+                IsVisible="{Binding #PART_Root.DistanceText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+            >
+                <Border
+                    Width="1"
+                    Margin="0,9"
+                    HorizontalAlignment="Left"
+                    Background="#24FFFFFF"
+                />
+                <TextBlock
+                    Margin="10,0,6,0"
+                    VerticalAlignment="Center"
+                    Text="{Binding #PART_Root.DistanceText}"
+                    Foreground="#F8FBFF"
+                    FontSize="13"
+                    FontWeight="SemiBold"
+                />
+                <Button
+                    Grid.Column="1"
+                    Width="28"
+                    Height="28"
+                    Theme="{StaticResource MapRulerCloseButtonTheme}"
+                    Click="OnClearClick"
+                >
+                    <avalonia:MaterialIcon
+                        Width="14"
+                        Height="14"
+                        Kind="Close"
+                        Foreground="#CCF8FBFF"
+                    />
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

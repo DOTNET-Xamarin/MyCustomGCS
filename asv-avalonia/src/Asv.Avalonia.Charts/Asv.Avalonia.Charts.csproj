@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+   
+    <ItemGroup>
+      <ProjectReference Include="..\Asv.Avalonia\Asv.Avalonia.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="ScottPlot" Version="5.1.58" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Core\Controls\Plot\PlotView.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="RS.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>RS.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="RS.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RS.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

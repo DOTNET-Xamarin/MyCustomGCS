@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>$(TargetFrameworkValue)</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <CodeAnalysisRuleSet>../CodeStyle.ruleset</CodeAnalysisRuleSet>
+        <WarningsAsErrors>
+            CS0169,
+            CS0618,
+            CS1502,
+            CS1503,
+            CS8524,
+            CS8600,
+            CS8601,
+            CS8602,
+            CS8603,
+            CS8604,
+            CS8625,
+            CS8629,
+            CS8762,
+            CA1510,
+            CA1851
+        </WarningsAsErrors>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Asv.Avalonia.LauncherReady" Version="$(AsvAvaloniaVersion)"/>
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.1"/>
+        <PackageReference Include="Roslynator.Analyzers" Version="$(RoslynAnalyzersVersion)">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="$(StylecopAnalyzersVersion)">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(UseLocalAsvDrones)' != 'true'">
+        <PackageReference Include="Asv.Drones.Api" Version="$(AsvDronesApiVersion)" />
+        <PackageReference Include="Asv.Drones" Version="$(AsvDronesVersion)" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(UseLocalAsvDrones)' == 'true'">
+      <ProjectReference Include="..\..\..\asv-drones\src\Asv.Drones.Api\Asv.Drones.Api.csproj" />
+      <ProjectReference Include="..\..\..\asv-drones\src\Asv.Drones\Asv.Drones.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Asv.Drones.Plugin.Gbs\Asv.Drones.Plugin.Gbs.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.Development.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="appsettings.Production.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>

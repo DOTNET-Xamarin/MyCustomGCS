@@ -1,0 +1,258 @@
+using Asv.Common;
+using Avalonia;
+using Avalonia.Data;
+using Avalonia.Media;
+
+namespace Asv.Avalonia.GeoMap;
+
+public partial class MapItem
+{
+    #region CenterY
+
+    public static readonly StyledProperty<VerticalOffset> CenterYProperty =
+        AvaloniaProperty.Register<MapItem, VerticalOffset>(nameof(CenterY));
+
+    public VerticalOffset CenterY
+    {
+        get => GetValue(CenterYProperty);
+        set => SetValue(CenterYProperty, value);
+    }
+
+    #endregion
+
+    #region CenterX
+
+    public static readonly StyledProperty<HorizontalOffset> CenterXProperty =
+        AvaloniaProperty.Register<MapItem, HorizontalOffset>(nameof(CenterX));
+
+    public HorizontalOffset CenterX
+    {
+        get => GetValue(CenterXProperty);
+        set => SetValue(CenterXProperty, value);
+    }
+
+    #endregion
+
+    #region Location
+
+    public static readonly StyledProperty<GeoPoint> LocationProperty = AvaloniaProperty.Register<
+        MapItem,
+        GeoPoint
+    >(nameof(Location));
+
+    public GeoPoint Location
+    {
+        get => GetValue(LocationProperty);
+        set => SetValue(LocationProperty, value);
+    }
+
+    #endregion
+
+    #region RotationCenterX
+
+    private double _rotationCenterX;
+
+    public static readonly DirectProperty<MapItem, double> RotationCenterXProperty =
+        AvaloniaProperty.RegisterDirect<MapItem, double>(
+            nameof(RotationCenterX),
+            o => o.RotationCenterX,
+            (o, v) => o.RotationCenterX = v
+        );
+
+    public double RotationCenterX
+    {
+        get => _rotationCenterX;
+        set => SetAndRaise(RotationCenterXProperty, ref _rotationCenterX, value);
+    }
+
+    #endregion
+
+    #region RotationCenterY
+
+    private double _rotationCenterY;
+
+    public static readonly DirectProperty<MapItem, double> RotationCenterYProperty =
+        AvaloniaProperty.RegisterDirect<MapItem, double>(
+            nameof(RotationCenterY),
+            o => o.RotationCenterY,
+            (o, v) => o.RotationCenterY = v
+        );
+
+    public double RotationCenterY
+    {
+        get => _rotationCenterY;
+        set => SetAndRaise(RotationCenterYProperty, ref _rotationCenterY, value);
+    }
+
+    #endregion
+
+    #region Rotation
+
+    public static readonly StyledProperty<double> RotationProperty = AvaloniaProperty.Register<
+        MapItem,
+        double
+    >(nameof(Rotation));
+
+    public double Rotation
+    {
+        get => GetValue(RotationProperty);
+        set => SetValue(RotationProperty, value);
+    }
+
+    #endregion
+
+    #region UseMapRotation
+
+    public static readonly StyledProperty<bool> UseMapRotationProperty = AvaloniaProperty.Register<
+        MapItem,
+        bool
+    >(nameof(UseMapRotation));
+
+    public bool UseMapRotation
+    {
+        get => GetValue(UseMapRotationProperty);
+        set => SetValue(UseMapRotationProperty, value);
+    }
+
+    #endregion
+
+    #region EffectiveRotation
+
+    private double _effectiveRotation;
+
+    public static readonly DirectProperty<MapItem, double> EffectiveRotationProperty =
+        AvaloniaProperty.RegisterDirect<MapItem, double>(
+            nameof(EffectiveRotation),
+            o => o.EffectiveRotation
+        );
+
+    public double EffectiveRotation
+    {
+        get => _effectiveRotation;
+        private set => SetAndRaise(EffectiveRotationProperty, ref _effectiveRotation, value);
+    }
+
+    #endregion
+
+    #region IsReadOnly
+
+    public static readonly StyledProperty<bool> IsReadOnlyProperty = AvaloniaProperty.Register<
+        MapItem,
+        bool
+    >(nameof(IsReadOnly));
+
+    public bool IsReadOnly
+    {
+        get => GetValue(IsReadOnlyProperty);
+        set => SetValue(IsReadOnlyProperty, value);
+    }
+
+    #endregion
+
+    #region CanDragWithoutModifier
+
+    public static readonly StyledProperty<bool> CanDragWithoutModifierProperty =
+        AvaloniaProperty.Register<MapItem, bool>(nameof(CanDragWithoutModifier));
+
+    public bool CanDragWithoutModifier
+    {
+        get => GetValue(CanDragWithoutModifierProperty);
+        set => SetValue(CanDragWithoutModifierProperty, value);
+    }
+
+    #endregion
+
+    #region IsSelected
+
+    public static readonly StyledProperty<bool> IsSelectedProperty = AvaloniaProperty.Register<
+        MapItem,
+        bool
+    >(nameof(IsSelected));
+
+    public bool IsSelected
+    {
+        get => GetValue(IsSelectedProperty);
+        set => SetValue(IsSelectedProperty, value);
+    }
+
+    #endregion
+
+    #region Polygon
+
+    private IList<GeoPoint>? _polygon;
+
+    public static readonly DirectProperty<MapItem, IList<GeoPoint>?> PolygonProperty =
+        AvaloniaProperty.RegisterDirect<MapItem, IList<GeoPoint>?>(
+            nameof(Polygon),
+            o => o.Polygon,
+            (o, v) => o.Polygon = v
+        );
+
+    public IList<GeoPoint>? Polygon
+    {
+        get => _polygon;
+        set => SetAndRaise(PolygonProperty, ref _polygon, value);
+    }
+
+    #endregion
+
+    #region IsPolygonClosed
+
+    public static readonly StyledProperty<bool> IsPolygonClosedProperty = AvaloniaProperty.Register<
+        MapItem,
+        bool
+    >(nameof(IsPolygonClosed));
+
+    public bool IsPolygonClosed
+    {
+        get => GetValue(IsPolygonClosedProperty);
+        set => SetValue(IsPolygonClosedProperty, value);
+    }
+
+    #endregion
+
+    #region Pen
+
+    public static Pen DefaultPen { get; } = new Pen(Brushes.Blue, 1);
+
+    public static readonly StyledProperty<IPen?> PenProperty = AvaloniaProperty.Register<
+        MapItem,
+        IPen?
+    >(nameof(Pen), defaultValue: DefaultPen);
+
+    public IPen? Pen
+    {
+        get => GetValue(PenProperty);
+        set => SetValue(PenProperty, value);
+    }
+
+    #endregion
+
+    #region Fill
+
+    public static readonly StyledProperty<IBrush?> FillProperty = AvaloniaProperty.Register<
+        MapItem,
+        IBrush?
+    >(nameof(Fill));
+
+    public IBrush? Fill
+    {
+        get => GetValue(FillProperty);
+        set => SetValue(FillProperty, value);
+    }
+
+    #endregion
+
+    #region Annotation
+
+    public static readonly StyledProperty<bool> IsAnnotationVisibleProperty =
+        AvaloniaProperty.Register<MapItem, bool>(nameof(IsAnnotationVisible), true);
+
+    public bool IsAnnotationVisible
+    {
+        get => GetValue(IsAnnotationVisibleProperty);
+        set => SetValue(IsAnnotationVisibleProperty, value);
+    }
+
+    #endregion
+}

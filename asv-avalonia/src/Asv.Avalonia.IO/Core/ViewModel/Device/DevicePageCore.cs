@@ -1,0 +1,227 @@
+using System.Diagnostics;
+using Asv.Common;
+using Asv.IO;
+using Asv.Modeling;
+using Avalonia.Controls;
+using Microsoft.Extensions.Logging;
+using ObservableCollections;
+using R3;
+using ZLogger;
+
+namespace Asv.Avalonia.IO;
+
+/// <summary>
+/// Class represents the core functionality of the DevicePage.
+/// </summary>
+/// <remarks>
+/// This class is used for aggregation.
+/// </remarks>
+public sealed class DevicePageCore : IDisposable
+{
+    private readonly CompositeDisposable _disposable = new();
+    private readonly SynchronizedReactiveProperty<bool> _isDeviceInitialized = new();
+    private readonly SynchronizedReactiveProperty<DeviceWrapper?> _target = new();
+    private readonly Subject<Unit> _onDeviceDisconnecting = new();
+    private readonly Subject<Unit> _onDeviceDisconnected = new();
+    private readonly SerialDisposable _waitInitSubscription = new();
+    private readonly IDeviceManager _devices;
+    private readonly ILogger _logger;
+    private readonly IPage _owner;
+    private readonly bool _loadLayoutOnInitialized;
+
+    private bool _disposed;
+    private string? _targetDeviceId;
+    private CancellationTokenSource? _deviceDisconnectedToken;
+
+    public DevicePageCore(IDeviceManager devices, ILogger logger, IPage owner)
+        : this(devices, logger, owner, loadLayoutOnInitialized: true) { }
+
+    internal DevicePageCore(
+        IDeviceManager devices,
+        ILogger logger,
+        IPage owner,
+        bool loadLayoutOnInitialized
+    )
+    {
+        if (Design.IsDesignMode)
+        {
+            _isDeviceInitialized.OnNext(false);
+            TimeProvider
+                .System.CreateTimer(
+                    _ => _isDeviceInitialized.OnNext(true),
+                    null,
+                    TimeSpan.FromSeconds(5),
+                    Timeout.InfiniteTimeSpan
+                )
+                .DisposeItWith(_disposable);
+        }
+
+        _devices = devices;
+        _logger = logger;
+        _owner = owner;
+        _loadLayoutOnInitialized = loadLayoutOnInitialized;
+
+        OnDeviceDisconnected = _onDeviceDisconnected.AsObservable();
+        OnDeviceDisconnecting = _onDeviceDisconnecting.AsObservable();
+    }
+
+    public ReadOnlyReactiveProperty<DeviceWrapper?> Target => _target;
+    public ReadOnlyReactiveProperty<bool> IsDeviceInitialized => _isDeviceInitialized;
+    public Observable<Unit> OnDeviceDisconnecting { get; }
+    public Observable<Unit> OnDeviceDisconnected { get; }
+
+    public void Init(NavArgs args)
+    {
+        ThrowIfDisposed();
+
+        _logger.ZLogTrace($"{nameof(_owner.Id)} init args: {args}");
+        Debug.Assert(_devices != null, "_devices != null");
+
+        _targetDeviceId = args.FirstOrDefault(x =>
+            x.Key == DevicePageViewModelMixin.ArgsDeviceIdKey
+        ).Value;
+
+        if (_targetDeviceId is null && !Design.IsDesignMode)
+        {
+            throw new ArgumentNullException(
+                $"{DevicePageViewModelMixin.ArgsDeviceIdKey} argument is required"
+            );
+        }
+
+        if (_loadLayoutOnInitialized)
+        {
+            _isDeviceInitialized
+                .Where(isInitialized => isInitialized)
+                .SubscribeAwait(
+                    async (_, cancel) => await _owner.Layout.LoadAllAsync(cancel),
+                    AwaitOperation.Switch
+                )
+                .DisposeItWith(_disposable);
+        }
+
+        _onDeviceDisconnected
+            .Synchronize()
+            .Subscribe(_ => _isDeviceInitialized.Value = false)
+            .DisposeItWith(_disposable);
+
+        if (_targetDeviceId is null)
+        {
+            return;
+        }
+
+        _devices
+            .Explorer.Devices.ObserveAdd()
+            .Where(_targetDeviceId, (e, id) => e.Value.Key.AsString() == id)
+            .Subscribe(x => DeviceFoundButNotInitialized(x.Value.Value))
+            .DisposeItWith(_disposable);
+
+        _devices
+            .Explorer.Devices.ObserveRemove()
+            .Where(_targetDeviceId, (e, id) => e.Value.Key.AsString() == id)
+            .Subscribe(_ =>
+            {
+                _onDeviceDisconnecting.OnNext(Unit.Default);
+                DeviceRemoved();
+                _onDeviceDisconnected.OnNext(Unit.Default);
+            })
+            .DisposeItWith(_disposable);
+
+        foreach (
+            var device in _devices.Explorer.Devices.Where(x => x.Key.AsString() == _targetDeviceId)
+        )
+        {
+            DeviceFoundButNotInitialized(device.Value);
+        }
+    }
+
+    internal ValueTask WaitUntilInitialized(CancellationToken cancel)
+    {
+        ThrowIfDisposed();
+        if (_isDeviceInitialized.Value)
+        {
+            return ValueTask.CompletedTask;
+        }
+
+        return new ValueTask(WaitAsync(cancel));
+
+        async Task WaitAsync(CancellationToken cancellationToken)
+        {
+            var completion = new TaskCompletionSource(
+                TaskCreationOptions.RunContinuationsAsynchronously
+            );
+            using var registration = cancellationToken.Register(() =>
+                completion.TrySetCanceled(cancellationToken)
+            );
+            using var subscription = _isDeviceInitialized
+                .Where(isInitialized => isInitialized)
+                .Take(1)
+                .Subscribe(_ => completion.TrySetResult());
+            await completion.Task;
+        }
+    }
+
+    private void DeviceRemoved()
+    {
+        _logger.ZLogTrace($"{nameof(_owner.Id)}  device removed: {_targetDeviceId}");
+        _deviceDisconnectedToken?.Cancel(false);
+        _deviceDisconnectedToken?.Dispose();
+        _deviceDisconnectedToken = null;
+        _waitInitSubscription.Disposable?.Dispose();
+        _target.OnNext(null);
+    }
+
+    private void DeviceFoundButNotInitialized(IClientDevice device)
+    {
+        DeviceRemoved();
+        _logger.ZLogTrace($"{nameof(_owner.Id)}  device found: {device.Id}");
+        _waitInitSubscription.Disposable = device
+            .State.Where(x => x == ClientDeviceState.Complete)
+            .Take(1)
+            .Subscribe(device, DeviceFoundAndInitialized);
+    }
+
+    private void DeviceFoundAndInitialized(ClientDeviceState state, IClientDevice device)
+    {
+        _logger.ZLogTrace($"{nameof(_owner.Id)}  device initialized: {device.Id}");
+        try
+        {
+            _waitInitSubscription.Disposable?.Dispose();
+            _deviceDisconnectedToken = new CancellationTokenSource();
+            _target.OnNext(new DeviceWrapper(device, _deviceDisconnectedToken.Token));
+            _isDeviceInitialized.Value = true;
+        }
+        catch (Exception e)
+        {
+            _logger.ZLogError(e, $"Error while initializing device {device.Id}");
+            throw;
+        }
+    }
+
+    public void Dispose()
+    {
+        if (_disposed)
+        {
+            return;
+        }
+
+        DeviceRemoved();
+        _target.Dispose();
+        _disposable.Dispose();
+        _onDeviceDisconnecting.Dispose();
+        _onDeviceDisconnected.Dispose();
+        _waitInitSubscription.Dispose();
+        _isDeviceInitialized.Dispose();
+
+        _disposed = true;
+    }
+
+    private void ThrowIfDisposed()
+    {
+        if (!_disposed)
+        {
+            return;
+        }
+
+        throw new ObjectDisposedException(nameof(DevicePageCore));
+    }
+}

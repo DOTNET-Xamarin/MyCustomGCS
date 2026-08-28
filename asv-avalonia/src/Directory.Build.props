@@ -1,0 +1,58 @@
+<Project>
+    <PropertyGroup>
+        <ApiVersion>3.0.3</ApiVersion>
+        <ProductVersion>3.0.3-dev.1</ProductVersion>
+        <LauncherVersion>0.0.1</LauncherVersion>
+        <TargetFramework>net10.0</TargetFramework>
+
+        <AvaloniaVersion>12.1.1</AvaloniaVersion>
+        <AsvCommonVersion>3.6.0</AsvCommonVersion>
+        
+        <FileVersion>$(ProductVersion)</FileVersion>
+        <Version>$(ProductVersion)</Version>
+        <PackageVersion>$(ProductVersion)</PackageVersion>
+        <Authors>https://github.com/asv-soft</Authors>
+        <Company>https://github.com/asv-soft</Company>
+        <Copyright>https://github.com/asv-soft</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/asv-soft/asv-avalonia</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/asv-soft/asv-avalonia</RepositoryUrl>
+        <LangVersion>preview</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)CodeStyle.ruleset</CodeAnalysisRuleSet>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningsAsErrors
+            Condition="!$([System.String]::Copy('$(MSBuildProjectName)').EndsWith('.Test'))"
+        >
+            CS0169,
+            CS0618,
+            CS1502,
+            CS1503,
+            CS8524,
+            CS8600,
+            CS8601,
+            CS8602,
+            CS8603,
+            CS8604,
+            CS8625,
+            CS8629,
+            CS8762,
+            CA1510,
+            CA1851
+        </WarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Asv.Avalonia.Example.Api'">
+        <FileVersion>$(ApiVersion)</FileVersion>
+        <Version>$(ApiVersion)</Version>
+        <PackageVersion>$(ApiVersion)</PackageVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'Asv.Avalonia.Launcher' or '$(MSBuildProjectName)' == 'Asv.Avalonia.Launcher.Api'">
+        <FileVersion>$(LauncherVersion)</FileVersion>
+        <Version>$(LauncherVersion)</Version>
+        <PackageVersion>$(LauncherVersion)</PackageVersion>
+    </PropertyGroup>
+
+</Project>
